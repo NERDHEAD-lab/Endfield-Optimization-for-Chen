@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/compare/0.1.0...0.1.1) (2026-02-18)
+
+
+### Bug Fixes
+
+* 패치노트가 제대로 표지 되지 않는 문제 수정 ([f45ce57](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/f45ce577ffbff700e055ac0bc12b9818bfe064ce))
+* 화면이 로드되지 않는 문제 수정 ([0021370](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/00213709d6ca7acea51c3730d538d57aeb73a003))
+
 ## [0.1.0](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/compare/0.1.0...0.1.0) (2026-02-18)
 
 
