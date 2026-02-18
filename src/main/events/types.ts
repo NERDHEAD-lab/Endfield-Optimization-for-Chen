@@ -12,11 +12,9 @@ export enum EventType {
   APP_MINIMIZE = "APP_MINIMIZE",
 }
 
-export interface EventHandler<T = any> {
-  (payload: T): void | Promise<void>;
-}
+export type EventHandler<T = unknown> = (payload: T) => void | Promise<void>;
 
-export interface AppEvent<T = any> {
+export interface AppEvent<T = unknown> {
   type: EventType;
   payload: T;
   timestamp: number;

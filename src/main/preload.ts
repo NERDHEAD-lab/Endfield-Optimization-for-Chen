@@ -16,10 +16,10 @@ contextBridge.exposeInMainWorld("electronAPI", {
   },
 
   // Events
-  on: (channel: string, func: (...args: any[]) => void) => {
+  on: (channel: string, func: (...args: unknown[]) => void) => {
     ipcRenderer.on(channel, (_, ...args) => func(...args));
   },
-  off: (channel: string, func: (...args: any[]) => void) => {
+  off: (channel: string, func: (...args: unknown[]) => void) => {
     ipcRenderer.removeListener(channel, (_, ...args) => func(...args));
   },
 });

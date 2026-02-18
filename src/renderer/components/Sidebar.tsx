@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useLauncherContext } from "../context/LauncherContext";
+import { useLauncherContext } from "../context";
 import { getMenuItems } from "../features";
 import { SidebarItem } from "./SidebarItem";
 import "./Sidebar.css";

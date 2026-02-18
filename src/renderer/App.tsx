@@ -3,8 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import icon from "./assets/icon.ico";
 import { Sidebar } from "./components/Sidebar";
-import { FeatureContextProvider } from "./context/FeatureContext";
-import { LauncherContextProvider } from "./context/LauncherContext";
+import { FeatureContextProvider, LauncherContextProvider } from "./context";
 import { getMenuItems } from "./features";
 import "./App.css";
 

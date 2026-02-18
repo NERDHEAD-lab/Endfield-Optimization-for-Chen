@@ -1,10 +1,6 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useMemo,
-} from "react";
+import React, { useState, useEffect, useMemo } from "react";
+
+import { LauncherContext, LauncherContextValue } from "./LauncherContext";
 
 interface SavedMenuState {
   order: string[];
@@ -12,15 +8,6 @@ interface SavedMenuState {
 }
 
 const STORAGE_KEY = "endfield_menu_state_v1";
-
-interface LauncherContextValue {
-  favorites: string[];
-  customOrder: string[];
-  toggleFavorite: (id: string) => void;
-  setCustomOrder: (order: string[]) => void;
-}
-
-const LauncherContext = createContext<LauncherContextValue | null>(null);
 
 export const LauncherContextProvider: React.FC<{
   children: React.ReactNode;
@@ -71,7 +58,7 @@ export const LauncherContextProvider: React.FC<{
     );
   };
 
-  const contextValue = useMemo(
+  const contextValue = useMemo<LauncherContextValue>(
     () => ({
       favorites,
       customOrder,
@@ -86,14 +73,4 @@ export const LauncherContextProvider: React.FC<{
       {children}
     </LauncherContext.Provider>
   );
-};
-
-export const useLauncherContext = () => {
-  const context = useContext(LauncherContext);
-  if (!context) {
-    throw new Error(
-      "useLauncherContext must be used within a LauncherContextProvider",
-    );
-  }
-  return context;
 };

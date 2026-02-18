@@ -1,19 +1,7 @@
-import React, { createContext, useContext, useMemo } from "react";
+import React, { useMemo } from "react";
 
+import { FeatureContext, FeatureStorage } from "./FeatureContext";
 import { IMenuFeature } from "../features/feature.types";
-
-interface FeatureStorage {
-  get: <T>(key: string) => T | null;
-  set: <T>(key: string, value: T) => void;
-  remove: (key: string) => void;
-}
-
-interface FeatureContextValue {
-  activeFeature: IMenuFeature | null;
-  storage: FeatureStorage;
-}
-
-const FeatureContext = createContext<FeatureContextValue | null>(null);
 
 export const FeatureContextProvider: React.FC<{
   activeFeature: IMenuFeature | null;
@@ -69,14 +57,4 @@ export const FeatureContextProvider: React.FC<{
       {children}
     </FeatureContext.Provider>
   );
-};
-
-export const useFeatureContext = () => {
-  const context = useContext(FeatureContext);
-  if (!context) {
-    throw new Error(
-      "useFeatureContext must be used within a FeatureContextProvider",
-    );
-  }
-  return context;
 };

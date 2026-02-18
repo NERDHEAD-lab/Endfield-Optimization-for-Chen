@@ -1,4 +1,4 @@
-import { useFeatureContext } from "../context/FeatureContext";
+import { useFeatureContext } from "../context";
 
 /**
  * Hook to access feature-specific storage.
