@@ -35,7 +35,7 @@ export interface OptimizationResult {
   batteryName: string;
   totalPower: number;
 
-  // [추가] 상시 가동해야 하는 배터리 개수 (몫)
+  // 상시 가동해야 하는 배터리 개수
   directRunCount: number;
 
   remainder: number;
@@ -88,7 +88,7 @@ export function calculatePowerOptimization(
       message:
         `[${battery.name}] 분석 결과\n` +
         `--------------------------------\n` +
-        `🔋 상시 가동(직결): **${directRunCount}개**\n` +
+        `🔋 **권장 배치: 상시 가동(직결) ${directRunCount}개**\n` +
         `✨ 나머지가 0입니다. 추가 회로 없이 깔끔하게 떨어집니다.`,
     };
   }
@@ -98,12 +98,13 @@ export function calculatePowerOptimization(
   const targetCycleValue = constant / remainder;
 
   // Case: 값이 24 미만 (직결 권장)
+  // [수정됨] 여기서 몫(directRunCount)에 1을 더해서 합쳐버립니다.
   if (targetCycleValue < 24) {
     return {
       status: "DIRECT_CONNECTION",
       batteryName: battery.name,
       totalPower: targetPower,
-      directRunCount,
+      directRunCount: directRunCount + 1, // <--- 4개 + 1개 = 5개로 통합
       remainder: remainder,
       blueprint: {
         cycleValue: targetCycleValue,
@@ -120,9 +121,8 @@ export function calculatePowerOptimization(
       message:
         `[${battery.name}] 분석 결과\n` +
         `--------------------------------\n` +
-        `🔋 1. 상시 가동(직결): **${directRunCount}개**\n` +
-        `⚡ 2. 추가 가동: **1개** (나머지 ${remainder} 담당)\n` +
-        `   └ ⚠️ 나머지 전력이 너무 커서(효율 낮음) 회로 없이 직접 연결하세요.`,
+        `🔋 **권장 배치: 상시 가동(직결) 총 ${directRunCount + 1}개**\n` +
+        `   └ ⚠️ 나머지 전력(${remainder})이 너무 커서, 마지막 1개도 회로 없이 직접 연결해야 합니다.`,
     };
   }
 
