@@ -58,12 +58,30 @@ export const LauncherContextProvider: React.FC<{
     );
   };
 
+  const checkVersionUpdate = () => {
+    try {
+      /* eslint-disable-next-line no-restricted-syntax */
+      const lastRunVersion = localStorage.getItem("last_run_version");
+      const currentVersion = __APP_VERSION__;
+
+      if (lastRunVersion !== currentVersion) {
+        /* eslint-disable-next-line no-restricted-syntax */
+        localStorage.setItem("last_run_version", currentVersion);
+        return true;
+      }
+    } catch (e) {
+      console.error("[LauncherContext] Failed to check version", e);
+    }
+    return false;
+  };
+
   const contextValue = useMemo<LauncherContextValue>(
     () => ({
       favorites,
       customOrder,
       toggleFavorite,
       setCustomOrder,
+      checkVersionUpdate,
     }),
     [favorites, customOrder],
   );

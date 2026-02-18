@@ -3,10 +3,16 @@ import { useTranslation } from "react-i18next";
 
 import icon from "./assets/icon.ico";
 import { UpdateStatus } from "../shared/types";
+import FeatureModal from "./components/FeatureModal";
 import { Sidebar } from "./components/Sidebar";
 import UpdateModal from "./components/UpdateModal";
-import { FeatureContextProvider, LauncherContextProvider } from "./context";
+import {
+  FeatureContextProvider,
+  LauncherContextProvider,
+  useLauncherContext,
+} from "./context";
 import { getMenuItems } from "./features";
+import { IMenuFeature } from "./features/feature.types";
 import "./App.css";
 
 const NotFound = () => <div>Not Found</div>;
@@ -56,6 +62,24 @@ function App() {
     setUpdateStatus((prev) => ({ ...prev, state: "idle" }));
   };
 
+  // --- Feature Modal State (Post-Update) ---
+  const [modalFeature, setModalFeature] = useState<IMenuFeature | null>(null);
+  const { checkVersionUpdate } = useLauncherContext();
+
+  useEffect(() => {
+    // Check for post-update (version change) using Context API
+    const isUpdated = checkVersionUpdate();
+
+    if (isUpdated) {
+      const patchNotesFeature = menuItems.find(
+        (item) => item.id === "patch-notes",
+      );
+      if (patchNotesFeature) {
+        setModalFeature(patchNotesFeature);
+      }
+    }
+  }, [menuItems, checkVersionUpdate]);
+
   return (
     <LauncherContextProvider>
       <div className="app-container">
@@ -64,6 +88,13 @@ function App() {
           onUpdate={handleUpdate}
           onInstall={handleInstall}
           onClose={handleCloseUpdateModal}
+        />
+
+        {/* Generic Feature Modal */}
+        <FeatureModal
+          isOpen={!!modalFeature}
+          onClose={() => setModalFeature(null)}
+          feature={modalFeature}
         />
 
         <div className="title-bar-drag-region">

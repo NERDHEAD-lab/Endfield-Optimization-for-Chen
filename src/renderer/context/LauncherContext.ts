@@ -5,6 +5,8 @@ export interface LauncherContextValue {
   customOrder: string[];
   toggleFavorite: (id: string) => void;
   setCustomOrder: (order: string[]) => void;
+  /** Checks if the app version has changed since last run. Returns true if updated. */
+  checkVersionUpdate: () => boolean;
 }
 
 export const LauncherContext = createContext<LauncherContextValue | null>(null);
