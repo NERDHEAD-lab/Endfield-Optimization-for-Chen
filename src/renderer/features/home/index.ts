@@ -6,6 +6,7 @@ export const HomeFeature: IFeatureModule = {
     id: "home",
     label: "nav.home",
     description: "home.description",
+    icon: "home",
     section: "header",
     priority: 0,
     component: Home,

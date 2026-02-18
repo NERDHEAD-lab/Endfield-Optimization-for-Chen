@@ -30,6 +30,34 @@
   cursor: grabbing;
 }
 
+.sidebar-item.draggable:active {
+  cursor: grabbing;
+}
+
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.sidebar-icon .material-symbols-outlined {
+  font-size: 24px;
+  color: #888;
+}
+
+.sidebar-item.active .sidebar-icon .material-symbols-outlined {
+  color: #dfcf99;
+}
+
 .sidebar-label {
   flex: 1;
 }

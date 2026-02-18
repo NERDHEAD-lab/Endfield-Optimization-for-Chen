@@ -37,6 +37,15 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
       onDrop={onDrop}
       data-id={item.id}
     >
+      {item.icon && (
+        <span className="sidebar-icon">
+          {item.icon.includes("/") || item.icon.includes(".") ? (
+            <img src={item.icon} alt="" />
+          ) : (
+            <span className="material-symbols-outlined">{item.icon}</span>
+          )}
+        </span>
+      )}
       <span className="sidebar-label">{t(item.label)}</span>
 
       {/* Favorite Button (Only for Body items) */}

@@ -8,6 +8,11 @@ declare module "*.ico" {
   export default value;
 }
 
+declare module "*.webp" {
+  const content: string;
+  export default content;
+}
+
 interface Window {
   electronAPI: {
     minimizeWindow: () => void;

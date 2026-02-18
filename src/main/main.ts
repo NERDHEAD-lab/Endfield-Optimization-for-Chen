@@ -15,6 +15,7 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
     },
+    icon: path.join(__dirname, "../src/renderer/assets/icon.ico"), // Valid for Dev
   });
 
   if (process.env.VITE_DEV_SERVER_URL) {
