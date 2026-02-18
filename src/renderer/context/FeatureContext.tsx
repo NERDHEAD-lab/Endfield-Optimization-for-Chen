@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useMemo } from "react";
+
 import { IMenuFeature } from "../features/feature.types";
 
 interface FeatureStorage {
@@ -35,6 +36,7 @@ export const FeatureContextProvider: React.FC<{
     return {
       get: <T,>(key: string): T | null => {
         if (!validateKey(key)) return null;
+        /* eslint-disable-next-line no-restricted-syntax */
         const data = localStorage.getItem(key);
         if (!data) return null;
         try {
@@ -46,10 +48,12 @@ export const FeatureContextProvider: React.FC<{
       set: <T,>(key: string, value: T): void => {
         if (!validateKey(key)) return;
         const data = typeof value === "string" ? value : JSON.stringify(value);
+        /* eslint-disable-next-line no-restricted-syntax */
         localStorage.setItem(key, data);
       },
       remove: (key: string): void => {
         if (!validateKey(key)) return;
+        /* eslint-disable-next-line no-restricted-syntax */
         localStorage.removeItem(key);
       },
     };

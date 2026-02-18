@@ -1,5 +1,6 @@
 // powerOptimization.test.ts
 import { describe, it, expect } from "vitest";
+
 import { calculatePowerOptimization, BatteryType } from "./utils";
 
 describe("Endfield Power Optimization Calculator", () => {

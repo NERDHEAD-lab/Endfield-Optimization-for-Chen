@@ -1,10 +1,13 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { getMenuItems } from "./features";
+
 import icon from "./assets/icon.ico";
 import { Sidebar } from "./components/Sidebar";
 import { FeatureContextProvider } from "./context/FeatureContext";
+import { getMenuItems } from "./features";
 import "./App.css";
+
+const NotFound = () => <div>Not Found</div>;
 
 function App() {
   const { t } = useTranslation();
@@ -18,11 +21,9 @@ function App() {
     [activeTabId, menuItems],
   );
 
-  const ActiveComponent = useMemo(() => {
-    return activeItem ? activeItem.component : () => <div>Not Found</div>;
-  }, [activeItem]);
+  const ActiveComponent = activeItem ? activeItem.component : NotFound;
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = `${t("app.title")} v${__APP_VERSION__}`;
   }, [t]);
 
@@ -38,14 +39,14 @@ function App() {
         <div className="window-controls">
           <button
             className="window-control-btn minimize-btn"
-            onClick={() => window.electronAPI.minimizeWindow()}
+            onClick={() => globalThis.electronAPI.minimizeWindow()}
             title="Minimize"
           >
             <span className="material-symbols-outlined">remove</span>
           </button>
           <button
             className="window-control-btn close-btn"
-            onClick={() => window.electronAPI.closeWindow()}
+            onClick={() => globalThis.electronAPI.closeWindow()}
             title="Close"
           >
             <span className="material-symbols-outlined">close</span>

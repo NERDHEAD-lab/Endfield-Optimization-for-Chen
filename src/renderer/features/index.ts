@@ -1,7 +1,7 @@
-import { HomeFeature } from "./home";
-import { SettingsFeature } from "./settings";
 import { BatteryFeature } from "./battery";
 import { IMenuFeature } from "./feature.types";
+import { HomeFeature } from "./home";
+import { SettingsFeature } from "./settings";
 
 export const features = [HomeFeature, SettingsFeature, BatteryFeature];
 

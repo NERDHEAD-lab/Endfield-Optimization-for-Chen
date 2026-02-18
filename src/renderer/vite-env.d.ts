@@ -25,3 +25,6 @@ interface Window {
     off: (channel: string, func: (...args: any[]) => void) => void;
   };
 }
+
+/* eslint-disable no-var */
+declare var electronAPI: Window["electronAPI"];

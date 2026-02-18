@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+
 import { getMenuItems } from "../features";
 import { SidebarItem } from "./SidebarItem";
 import "./Sidebar.css";
@@ -26,23 +27,35 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const allFeatures = useMemo(() => getMenuItems(), []);
 
   // State
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [customOrder, setCustomOrder] = useState<string[]>([]);
-  const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
-
-  // Load state from localStorage on mount
-  useEffect(() => {
+  const [favorites, setFavorites] = useState<string[]>(() => {
     try {
+      /* eslint-disable-next-line no-restricted-syntax */
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed: SavedMenuState = JSON.parse(saved);
-        setFavorites(parsed.favorites || []);
-        setCustomOrder(parsed.order || []);
+        return parsed.favorites || [];
       }
     } catch (e) {
-      console.error("Failed to load menu state", e);
+      console.error("Failed to load menu favorites", e);
     }
-  }, []);
+    return [];
+  });
+
+  const [customOrder, setCustomOrder] = useState<string[]>(() => {
+    try {
+      /* eslint-disable-next-line no-restricted-syntax */
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed: SavedMenuState = JSON.parse(saved);
+        return parsed.order || [];
+      }
+    } catch (e) {
+      console.error("Failed to load menu order", e);
+    }
+    return [];
+  });
+
+  const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
 
   // Save state whenever it changes
   useEffect(() => {
@@ -50,6 +63,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       order: customOrder,
       favorites: favorites,
     };
+    /* eslint-disable-next-line no-restricted-syntax */
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [favorites, customOrder]);
 
@@ -113,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   // 2. Sort by custom order (or priority if no custom order)
   // 3. Sort by Favorites (Favorites always on top)
   const bodyItems = useMemo(() => {
-    let items = allFeatures.filter((f) => f.section === "body");
+    const items = allFeatures.filter((f) => f.section === "body");
 
     // Apply Custom Order
     if (customOrder.length > 0) {

@@ -1,5 +1,3 @@
-import { AppConfig } from "../../shared/types";
-
 export enum EventType {
   // Config
   CONFIG_CHANGED = "CONFIG_CHANGED",
