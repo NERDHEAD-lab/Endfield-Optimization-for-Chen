@@ -10,7 +10,7 @@ import {
   UpdateDownloadHandler,
   UpdateInstallHandler,
 } from "./events/handlers/UpdateHandler";
-import { EventType } from "./events/types";
+import { AppContext, EventType } from "./events/types";
 
 // Event Bus Integration
 
@@ -31,6 +31,7 @@ function createWindow() {
 
   if (process.env.VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
+    mainWindow.webContents.openDevTools({ mode: "detach" }); // Always open in dev (detached)
   } else {
     mainWindow.loadFile(path.join(__dirname, "../dist/index.html"));
   }
@@ -105,7 +106,7 @@ const registerIpcBridge = () => {
   ];
 
   eventsToBridge.forEach((type) => {
-    ipcMain.on(type, (_, payload) => {
+    ipcMain.on(type, (_, payload: unknown) => {
       eventBus.emitEvent(type, payload);
     });
   });
@@ -115,5 +116,25 @@ registerIpcBridge();
 
 // Start background update check
 app.whenReady().then(() => {
-  startUpdateCheckInterval({ mainWindow });
+  // Pass a getter-like object or ensure mainWindow reference is accessible
+  // Since we can't easily change the interface to be a getter without refactoring types,
+  // we'll rely on the handler re-checking the window or use a wrapper if needed.
+  // BUT the simple fix is to reference the variable inside the handler if possible,
+  // or pass a mutable context object.
+  // Here, we'll assign the context object ONCE, but mainWindow is null then.
+  // Javascript objects are passed by reference, but properties are values if primitive (null is primitive-like).
+  // Wait, objects are reference types. But { mainWindow } creates a NEW object `{ mainWindow: null }`.
+  // Later `mainWindow = win` updates the VARIABLE, not the property of that old object.
+
+  // Hacky but effective fix: Pass a proxy or simply use the exported variable if structure allows.
+  // Best approach here: modify the handlers to take a function that returns the window, OR
+  // define the context object globally and update its property.
+
+  const context: AppContext = {
+    get mainWindow() {
+      return mainWindow;
+    },
+  };
+
+  startUpdateCheckInterval(context);
 });

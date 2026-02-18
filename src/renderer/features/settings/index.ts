@@ -9,7 +9,7 @@ export const SettingsFeature: IFeatureModule = {
     icon: "info",
     usingKeys: ["app_settings"],
     section: "footer",
-    priority: 999,
+    priority: 1000,
     component: Settings,
   },
 };

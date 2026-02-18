@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 import { ReleaseNote } from "../../../shared/types";
 import "./PatchNotes.css"; // We will create this or use existing styles
@@ -77,10 +79,10 @@ const PatchNotes: React.FC = () => {
                   <span className="material-symbols-outlined">open_in_new</span>
                 </a>
               </div>
-              <div className="patch-note-body">
-                {note.body.split("\n").map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
+              <div className="patch-note-body markdown-body">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {note.body}
+                </ReactMarkdown>
               </div>
             </div>
           ))
