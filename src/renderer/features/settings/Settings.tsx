@@ -8,8 +8,9 @@ const Settings: React.FC = () => {
     <div className="p-8">
       <h1>{t("nav.settings")}</h1>
       <div className="card">
-        <p>Version: v{__APP_VERSION__}</p>
-        <p>Commit: {__APP_HASH__}</p>
+        <p>
+          Version: v{__APP_VERSION__} ({__APP_HASH__})
+        </p>
         <p>Developer: NERDHEAD LAB</p>
       </div>
     </div>

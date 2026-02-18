@@ -166,7 +166,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </ul>
       </div>
 
-      <div className="sidebar-divider" />
+      {headerItems.length > 0 && bodyItems.length > 0 && (
+        <div className="sidebar-divider" />
+      )}
 
       <div className="sidebar-section body-section">
         <ul className="sidebar-menu">

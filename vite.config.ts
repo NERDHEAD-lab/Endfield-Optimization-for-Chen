@@ -12,7 +12,17 @@ import fs from "node:fs";
 
 // Get App Version & Hash
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
-const gitHash = execSync("git rev-parse --short HEAD").toString().trim();
+const getGitHash = () => {
+  try {
+    const hash = execSync("git rev-parse --short HEAD").toString().trim();
+    const isDirty =
+      execSync("git status --porcelain").toString().trim().length > 0;
+    return isDirty ? `${hash}-dirty` : hash;
+  } catch (e) {
+    return "unknown";
+  }
+};
+const gitHash = getGitHash();
 
 // https://vitejs.dev/config/
 export default defineConfig({
