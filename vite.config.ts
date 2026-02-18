@@ -34,6 +34,7 @@ const repoName = match ? match[2] : "Endfield-Optimization-for-Chen";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
     __APP_HASH__: JSON.stringify(gitHash),
