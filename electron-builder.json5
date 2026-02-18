@@ -1,6 +1,6 @@
 {
   appId: "com.nerdhead.endfield-optimization",
-  productName: "Endfield Optimization (Chen)",
+  productName: "Arknights Endfield Optimization Tool for Chen",
   directories: {
     output: "dist",
   },

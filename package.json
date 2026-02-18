@@ -1,9 +1,9 @@
 {
   "name": "endfield-optimization-for-chen",
-  "productName": "Endfield Optimization (Chen)",
+  "productName": "Arknights Endfield Optimization Tool for Chen",
   "private": true,
   "version": "0.1.0",
-  "description": "Optimization Tools for Arknights: Endfield (Chen)",
+  "description": "Optimization Tools for Arknights: Endfield for Chen",
   "author": "NERDHEAD LAB",
   "license": "AGPL-3.0-or-later",
   "main": "dist-electron/main.js",

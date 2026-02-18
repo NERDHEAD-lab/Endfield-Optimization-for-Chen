@@ -19,9 +19,7 @@ export default function BatteryCalculator() {
   }, [target, batteryType]);
 
   return (
-    <div className="p-8 battery-calculator-container">
-      <h1>Battery Optimization (Mulung)</h1>
-
+    <div className="battery-calculator-container">
       <div className="card input-section">
         <div className="form-group">
           <label>Target Power (시설 총 전력):</label>

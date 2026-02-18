@@ -4,7 +4,7 @@
 
 ## 1. Project Context
 
-- **목적**: Arknights: Endfield (Chen) 최적화 도구.
+- **목적**: Arknights: Endfield Optimization Tool for Chen.
 - **주요 기능**:
   - **Battery Optimization Calculator**: 무릉 배터리 최적화 계산기 (2분배/3합류).
   - **Auto-Update**: 실행 시 업데이트 체크 및 패치노트 제공.

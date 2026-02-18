@@ -4,7 +4,8 @@ import Settings from "./Settings";
 export const SettingsFeature: IFeatureModule = {
   menu: {
     id: "settings",
-    label: "Info", // Changed from Settings
+    label: "nav.info",
+    description: "settings.description",
     section: "footer",
     priority: 999,
     component: Settings,

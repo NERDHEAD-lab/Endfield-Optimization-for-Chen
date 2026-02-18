@@ -1,3 +1,5 @@
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { getMenuItems } from "../";
 import { IFeatureComponentProps } from "../feature.types";
 
@@ -6,9 +8,7 @@ const Home: React.FC<IFeatureComponentProps> = ({ onNavigate }) => {
   const bodyItems = getMenuItems().filter((item) => item.section === "body");
 
   return (
-    <div className="p-8">
-      <h1>{t("nav.home")}</h1>
-      <p>{t("home.welcome")}</p>
+    <div className="">
       <div className="dashboard-grid">
         <div className="card">
           <h3>Quick Tools</h3>

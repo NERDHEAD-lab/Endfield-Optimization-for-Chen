@@ -12,10 +12,18 @@ function App() {
     menuItems[0]?.id || "home",
   );
 
+  const activeItem = useMemo(
+    () => menuItems.find((item) => item.id === activeTabId),
+    [activeTabId, menuItems],
+  );
+
   const ActiveComponent = useMemo(() => {
-    const activeItem = menuItems.find((item) => item.id === activeTabId);
     return activeItem ? activeItem.component : () => <div>Not Found</div>;
-  }, [activeTabId, menuItems]);
+  }, [activeItem]);
+
+  React.useEffect(() => {
+    document.title = `${t("app.title")} v${__APP_VERSION__}`;
+  }, [t]);
 
   return (
     <div className="app-container">
@@ -23,7 +31,7 @@ function App() {
         <div className="title-bar-content">
           <img src={icon} alt="App Icon" className="title-bar-icon" />
           <span className="title-bar-text">
-            Endfield Optimization for Chen v{__APP_VERSION__}
+            {t("app.title")} v{__APP_VERSION__}
           </span>
         </div>
         <div className="window-controls">
@@ -45,7 +53,30 @@ function App() {
       </div>
       <Sidebar activeTabId={activeTabId} onTabChange={setActiveTabId} />
       <main className="content">
-        <ActiveComponent onNavigate={setActiveTabId} />
+        {activeItem && (
+          <header className="content-header">
+            <h1>{t(activeItem.label)}</h1>
+            {activeItem.description && <p>{t(activeItem.description)}</p>}
+          </header>
+        )}
+        <div className="content-body">
+          <ActiveComponent onNavigate={setActiveTabId} />
+        </div>
+        <footer className="branding-footer">
+          <a
+            href="https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="branding-link"
+          >
+            <span>POWERED BY NERDHEAD LAB</span>
+            <img
+              src="src/renderer/assets/icon-github.svg"
+              alt="GitHub"
+              className="branding-icon"
+            />
+          </a>
+        </footer>
       </main>
     </div>
   );

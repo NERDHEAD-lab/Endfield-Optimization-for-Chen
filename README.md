@@ -1,7 +1,7 @@
 <h1 align="center">Endfield Optimization for Chen</h1>
 
 <p align="center">
-  <b>Project Endfield Optimization Tool</b>
+  <b>Arknights: Endfield Optimization Tool for Chen</b>
 </p>
 
 > **Disclaimer**: This is an **unofficial** tool for **Arknights: Endfield**. It is not affiliated with Hypergryph/GRYPHLINE. Use at your own risk.
