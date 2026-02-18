@@ -1,0 +1,241 @@
+import axios from "axios";
+import { app } from "electron";
+import { autoUpdater } from "electron-updater";
+
+import { UpdateStatus } from "../../../shared/types";
+import { logger } from "../../utils/logger";
+import { AppContext, EventHandler } from "../types";
+
+// Configure autoUpdater
+autoUpdater.autoDownload = false; // Manual download trigger required
+autoUpdater.autoInstallOnAppQuit = true;
+
+// Prevent duplicate listeners
+let isListenerAttached = false;
+let currentCheckIsSilent = false;
+let lastEmittedPercent = -1; // For throttling progress updates
+
+const sendStatus = (context: AppContext, status: UpdateStatus) => {
+  const win = context.mainWindow;
+  if (win && !win.isDestroyed()) {
+    win.webContents.send("update-status-change", {
+      ...status,
+      isSilent: currentCheckIsSilent,
+    });
+  }
+};
+
+const attachUpdateListeners = (context: AppContext) => {
+  if (isListenerAttached) return;
+
+  autoUpdater.on("checking-for-update", () => {
+    logger.log("[UpdateHandler] Checking for updates...");
+    sendStatus(context, { state: "checking" });
+  });
+
+  let lastVersionInfo = "";
+
+  autoUpdater.on("update-available", (info) => {
+    lastVersionInfo = info.version; // Store version for progress updates
+    logger.log(
+      `[UpdateHandler] Update available: ${info.version} (Current: ${app.getVersion()}, Silent: ${currentCheckIsSilent})`,
+    );
+    sendStatus(context, { state: "available", version: info.version });
+  });
+
+  autoUpdater.on("update-not-available", (info) => {
+    logger.log(
+      `[UpdateHandler] Update not available. (Current: ${app.getVersion()}, Latest: ${info.version})`,
+    );
+    sendStatus(context, { state: "idle" });
+  });
+
+  autoUpdater.on("error", (err) => {
+    logger.error("[UpdateHandler] Update error:", err);
+    sendStatus(context, { state: "idle" });
+  });
+
+  autoUpdater.on("download-progress", (progressObj) => {
+    // Only send updates if percent increased by at least 10%
+    // to prevent flooding the event bus and UI logs.
+    const currentPercent = Math.floor(progressObj.percent / 10) * 10;
+    if (currentPercent !== lastEmittedPercent) {
+      lastEmittedPercent = currentPercent;
+      sendStatus(context, {
+        state: "downloading",
+        progress: progressObj.percent,
+        version: lastVersionInfo,
+      });
+    }
+  });
+
+  autoUpdater.on("update-downloaded", (info) => {
+    logger.log(`[UpdateHandler] Update downloaded: ${info.version}`);
+    sendStatus(context, { state: "downloaded", version: info.version });
+    lastEmittedPercent = -1; // Reset for next time
+  });
+
+  isListenerAttached = true;
+};
+
+/**
+ * Checks for updates smartly by verifying the tag first via GitHub API.
+ * This prevents unnecessary downloads of `latest.yml` which inflates download counts.
+ */
+const checkForUpdatesSmart = async () => {
+  try {
+    const repo = `${__REPO_OWNER__}/${__REPO_NAME__}`;
+    const url = `https://api.github.com/repos/${repo}/releases/latest`;
+
+    logger.log(
+      `[UpdateHandler] Smart Check: Fetching latest release from ${url}`,
+    );
+    const response = await axios.get(url, { timeout: 5000 });
+
+    if (response.status === 200 && response.data?.tag_name) {
+      const latestTag = response.data.tag_name; // e.g., "v0.7.0" or "0.7.0"
+      const currentVersion = app.getVersion();
+
+      // Remove 'v' prefix for comparison if present
+      const cleanLatest = latestTag.replace(/^v/, "");
+      const cleanCurrent = currentVersion.replace(/^v/, "");
+
+      logger.log(
+        `[UpdateHandler] Smart Check: Latest=${cleanLatest}, Current=${cleanCurrent}`,
+      );
+
+      // Simple string comparison for now as versions are strictly numeric + dots
+      const parseVersion = (v: string) => v.split(".").map(Number);
+      const [lMa, lMi, lPa] = parseVersion(cleanLatest);
+      const [cMa, cMi, cPa] = parseVersion(cleanCurrent);
+
+      let isNewer = false;
+      if (lMa > cMa) isNewer = true;
+      else if (lMa === cMa && lMi > cMi) isNewer = true;
+      else if (lMa === cMa && lMi === cMi && lPa > cPa) isNewer = true;
+
+      if (!isNewer) {
+        logger.log(
+          "[UpdateHandler] Smart Check: App is up to date (or newer). Skipping autoUpdater.",
+        );
+        return; // EXIT: Do not trigger autoUpdater
+      }
+
+      logger.log(
+        "[UpdateHandler] Smart Check: New version detected. Triggering autoUpdater...",
+      );
+    }
+  } catch (e: unknown) {
+    if (axios.isAxiosError(e) && e.response?.status === 403) {
+      logger.warn(
+        "[UpdateHandler] GitHub API Rate Limit exceeded (403). Falling back to standard check.",
+      );
+    } else {
+      const message = e instanceof Error ? e.message : String(e);
+      logger.error(
+        "[UpdateHandler] Smart Check failed. Falling back to standard check.",
+        message,
+      );
+    }
+  }
+
+  // Fallback or explicit update required
+  await autoUpdater.checkForUpdates();
+};
+
+/**
+ * Starts a periodic update check in the background.
+ * Periodic checks are always 'silent' (don't show popup).
+ */
+export const startUpdateCheckInterval = (context: AppContext) => {
+  const ONE_HOUR = 1000 * 60 * 60;
+  const UPDATE_INTERVAL = ONE_HOUR * 4; // Check every 4 hours
+
+  logger.log("[UpdateHandler] Initializing background update scheduler.");
+
+  setInterval(async () => {
+    if (!app.isPackaged || process.env.VITE_DEV_SERVER_URL) {
+      return;
+    }
+
+    logger.log("[UpdateHandler] Background update check triggered.");
+    currentCheckIsSilent = true; // Background checks are silent
+    attachUpdateListeners(context);
+    try {
+      await checkForUpdatesSmart();
+    } catch (e) {
+      logger.error("[UpdateHandler] Background check failed:", e);
+    }
+  }, UPDATE_INTERVAL);
+};
+
+/**
+ * Triggers an update check immediately.
+ * @param context App context
+ * @param isSilent Whether to suppress UI popups if an update is found
+ */
+export const triggerUpdateCheck = async (
+  context: AppContext,
+  isSilent = false,
+) => {
+  if (!app.isPackaged || process.env.VITE_DEV_SERVER_URL) {
+    logger.log(`[UpdateHandler] Skipping update check in development mode.`);
+    return;
+  }
+
+  logger.log(
+    `[UpdateHandler] Manual/Triggered update check (isSilent: ${isSilent})`,
+  );
+  currentCheckIsSilent = isSilent;
+  attachUpdateListeners(context);
+
+  try {
+    await checkForUpdatesSmart();
+  } catch (e) {
+    logger.error("[UpdateHandler] Failed check:", e);
+  }
+};
+
+/**
+ * Handler: Check for Updates
+ */
+export const UpdateCheckHandler: EventHandler<{ isSilent?: boolean }> = async (
+  payload,
+  context,
+) => {
+  const isSilent = payload?.isSilent ?? false;
+  await triggerUpdateCheck(context, isSilent);
+};
+
+/**
+ * Handler: Start Download
+ */
+export const UpdateDownloadHandler: EventHandler = async (
+  _payload,
+  context,
+) => {
+  logger.log("[UpdateHandler] Requesting download...");
+  currentCheckIsSilent = false; // Downloading is usually explicit
+  attachUpdateListeners(context);
+  await autoUpdater.downloadUpdate();
+};
+
+/**
+ * Handler: Install & Restart
+ */
+export const UpdateInstallHandler: EventHandler = async (
+  _payload,
+  _context,
+) => {
+  logger.log(
+    `[UpdateHandler] Requesting install & quit... (Current EXE: ${app.getPath("exe")})`,
+  );
+
+  if (!app.isPackaged && process.env.VITE_DEV_SERVER_URL) {
+    logger.log(
+      "[UpdateHandler] Dev mode detected. Skipping actual quitAndInstall.",
+    );
+    return;
+  }
+  autoUpdater.quitAndInstall(true, true); // Enforce Silent Install (isSilent: true)
+};

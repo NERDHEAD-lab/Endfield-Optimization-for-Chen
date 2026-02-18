@@ -23,3 +23,25 @@ export const DEFAULT_CONFIG: AppConfig = {
   launcherVersion: "0.0.0",
   autoUpdate: true,
 };
+
+export type UpdateState =
+  | "idle"
+  | "checking"
+  | "available"
+  | "downloading"
+  | "downloaded"
+  | "error";
+
+export interface UpdateStatus {
+  state: UpdateState;
+  progress?: number;
+  version?: string;
+  error?: string;
+}
+
+export interface ReleaseNote {
+  version: string;
+  date: string;
+  body: string;
+  html_url: string;
+}

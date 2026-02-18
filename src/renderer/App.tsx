@@ -2,7 +2,9 @@ import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import icon from "./assets/icon.ico";
+import { UpdateStatus } from "../shared/types";
 import { Sidebar } from "./components/Sidebar";
+import UpdateModal from "./components/UpdateModal";
 import { FeatureContextProvider, LauncherContextProvider } from "./context";
 import { getMenuItems } from "./features";
 import "./App.css";
@@ -23,13 +25,47 @@ function App() {
 
   const ActiveComponent = activeItem ? activeItem.component : NotFound;
 
+  // --- Auto Update State ---
+  const [updateStatus, setUpdateStatus] = useState<UpdateStatus>({
+    state: "idle",
+  });
+
   useEffect(() => {
     document.title = `${t("app.title")} v${__APP_VERSION__}`;
+
+    // Listen for update status
+    globalThis.electronAPI.on("update-status-change", (status: unknown) => {
+      setUpdateStatus(status as UpdateStatus);
+    });
+
+    // Initial check (silent)
+    globalThis.electronAPI.send("UI_UPDATE_CHECK", { isSilent: true });
+
+    return () => {};
   }, [t]);
+
+  const handleUpdate = () => {
+    globalThis.electronAPI.send("UI_UPDATE_DOWNLOAD");
+  };
+
+  const handleInstall = () => {
+    globalThis.electronAPI.send("UI_UPDATE_INSTALL");
+  };
+
+  const handleCloseUpdateModal = () => {
+    setUpdateStatus((prev) => ({ ...prev, state: "idle" }));
+  };
 
   return (
     <LauncherContextProvider>
       <div className="app-container">
+        <UpdateModal
+          status={updateStatus}
+          onUpdate={handleUpdate}
+          onInstall={handleInstall}
+          onClose={handleCloseUpdateModal}
+        />
+
         <div className="title-bar-drag-region">
           <div className="title-bar-content">
             <img src={icon} alt="App Icon" className="title-bar-icon" />

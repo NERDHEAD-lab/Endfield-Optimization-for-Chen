@@ -1,0 +1,112 @@
+.update-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.update-modal-content {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  text-align: center;
+  border: 1px solid #dfcf99;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.update-title {
+  color: #dfcf99;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.update-message {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.update-progress-container {
+  background-color: #333;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.update-progress-bar {
+  background-color: #dfcf99;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.update-progress-text {
+  display: block;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.update-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-update-primary {
+  background-color: #dfcf99;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-update-primary:hover {
+  background-color: #c9b986;
+}
+
+.btn-update-primary.disabled {
+  background-color: #555;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.btn-update-secondary {
+  background-color: transparent;
+  color: #aaa;
+  border: 1px solid #555;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-update-secondary:hover {
+  border-color: #aaa;
+  color: #fff;
+}

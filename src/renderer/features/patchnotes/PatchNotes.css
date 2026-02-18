@@ -1,0 +1,88 @@
+.patch-notes-page {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+  color: #e0e0e0;
+}
+
+.patch-notes-page.loading,
+.patch-notes-page.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.patch-notes-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.patch-note-card {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #333;
+}
+
+.patch-note-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 12px;
+}
+
+.version-badge {
+  background-color: #dfcf99;
+  color: #1a1a1a;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-right: 12px;
+}
+
+.release-date {
+  color: #888;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  color: #dfcf99;
+  text-decoration: none;
+  font-size: 0.9rem;
+  gap: 4px;
+  transition: opacity 0.2s;
+}
+
+.github-link:hover {
+  opacity: 0.8;
+}
+
+.github-link .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.patch-note-body {
+  line-height: 1.6;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.patch-note-body p {
+  margin-bottom: 8px;
+}
+
+.patch-note-body p:last-child {
+  margin-bottom: 0;
+}

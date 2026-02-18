@@ -1,8 +1,5 @@
 /// <reference types="vite/client" />
 
-declare const __APP_VERSION__: string;
-declare const __APP_HASH__: string;
-
 declare module "*.ico" {
   const value: string;
   export default value;
@@ -21,6 +18,7 @@ interface Window {
     setConfig: (key: string, value: unknown) => Promise<void>;
     checkForUpdates: () => void;
     onUpdateAvailable: (callback: (version: string) => void) => void;
+    send: (channel: string, payload?: unknown) => void;
     on: (channel: string, func: (...args: unknown[]) => void) => void;
     off: (channel: string, func: (...args: unknown[]) => void) => void;
   };
