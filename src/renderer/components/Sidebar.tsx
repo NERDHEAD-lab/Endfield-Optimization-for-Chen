@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useMemo, useState } from "react";
 
 import { useLauncherContext } from "../context";
 import { getMenuItems } from "../features";
@@ -15,7 +14,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
   activeTabId,
   onTabChange,
 }) => {
-  useTranslation();
   const { favorites, customOrder, toggleFavorite, setCustomOrder } =
     useLauncherContext();
 

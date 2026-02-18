@@ -5,6 +5,10 @@
   "version": "0.1.0",
   "description": "Optimization Tools for Arknights: Endfield for Chen",
   "author": "NERDHEAD LAB",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen.git"
+  },
   "license": "AGPL-3.0-or-later",
   "main": "dist-electron/main.js",
   "scripts": {
@@ -21,6 +25,7 @@
     "node": ">=24"
   },
   "dependencies": {
+    "axios": "^1.13.5",
     "electron-store": "^11.0.2",
     "electron-updater": "^6.1.7",
     "i18next": "^23.10.0",

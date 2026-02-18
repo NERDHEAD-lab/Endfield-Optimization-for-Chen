@@ -10,12 +10,16 @@ contextBridge.exposeInMainWorld("electronAPI", {
     ipcRenderer.invoke("config:set", key, value),
 
   // Update
-  checkForUpdates: () => ipcRenderer.send("update:check"),
+  checkForUpdates: () =>
+    ipcRenderer.send("UI_UPDATE_CHECK", { isSilent: false }),
   onUpdateAvailable: (callback: (version: string) => void) => {
     ipcRenderer.on("update-available", (_, version) => callback(version));
   },
 
   // Events
+  send: (channel: string, payload?: unknown) => {
+    ipcRenderer.send(channel, payload);
+  },
   on: (channel: string, func: (...args: unknown[]) => void) => {
     ipcRenderer.on(channel, (_, ...args) => func(...args));
   },
