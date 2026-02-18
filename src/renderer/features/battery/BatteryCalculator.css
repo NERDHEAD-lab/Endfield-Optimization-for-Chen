@@ -70,6 +70,116 @@
   line-height: 1.6;
 }
 
+.form-group label {
+  display: block;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* Unify Input & Dropdown styles */
+.battery-calculator-container .input-field,
+.custom-dropdown-selected {
+  height: 42px;
+  margin-top: 0;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: white;
+  padding: 0 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+}
+
+/* Custom Dropdown Styling */
+.custom-dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.custom-dropdown-selected {
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  user-select: none;
+}
+
+.custom-dropdown-selected:hover {
+  border-color: #dfcf99;
+  background-color: #333;
+}
+
+.custom-dropdown-selected.active {
+  border-color: #dfcf99;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dropdown-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+.dropdown-label {
+  flex: 1;
+  color: #fff;
+}
+
+.expand-icon {
+  color: #dfcf99;
+  font-size: 20px;
+}
+
+.custom-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #1e1e1e;
+  border: 1px solid #dfcf99;
+  border-top: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.custom-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #ccc;
+}
+
+.custom-dropdown-item:hover {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.custom-dropdown-item.selected {
+  background-color: #333;
+  color: #dfcf99;
+  font-weight: 500;
+}
+
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
 .details-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

@@ -1,33 +1,56 @@
+import hcValleyIcon from "../../assets/batteries/hc_valley.webp";
+import lcValleyIcon from "../../assets/batteries/lc_valley.webp";
+import lcWulingIcon from "../../assets/batteries/lc_wuling.webp";
+import mcValleyIcon from "../../assets/batteries/mc_valley.webp";
+import originiumIcon from "../../assets/batteries/originium.webp";
+
 /**
  * 배터리 종류 열거형 (Enum)
  */
 export enum BatteryType {
-  MULUNG_1600 = "MULUNG_1600",
-  VALLEY_1100 = "VALLEY_1100",
-  STANDARD_420 = "STANDARD_420",
-  LIGHT_220 = "LIGHT_220",
-  RAW_ORE_50 = "RAW_ORE_50",
+  LC_WULING = "LC_WULING",
+  HC_VALLEY = "HC_VALLEY",
+  MC_VALLEY = "MC_VALLEY",
+  LC_VALLEY = "LC_VALLEY",
+  ORIGINIUM = "ORIGINIUM",
 }
 
 export const SAFETY_MARGIN_OFFSET = 195;
 
 export const BATTERY_DATA: Record<
   BatteryType,
-  { name: string; power: number; duration: number }
+  { name: string; power: number; duration: number; icon: string }
 > = {
-  [BatteryType.MULUNG_1600]: {
-    name: "무릉 (대용량)",
+  [BatteryType.LC_WULING]: {
+    name: "battery.type.lc_wuling",
     power: 1600,
     duration: 40,
+    icon: lcWulingIcon,
   },
-  [BatteryType.VALLEY_1100]: {
-    name: "협곡 (대용량)",
+  [BatteryType.HC_VALLEY]: {
+    name: "battery.type.hc_valley",
     power: 1100,
     duration: 40,
+    icon: hcValleyIcon,
   },
-  [BatteryType.STANDARD_420]: { name: "표준 키네틱", power: 420, duration: 40 },
-  [BatteryType.LIGHT_220]: { name: "경량 키네틱", power: 220, duration: 40 },
-  [BatteryType.RAW_ORE_50]: { name: "블라이트 원석", power: 50, duration: 8 },
+  [BatteryType.MC_VALLEY]: {
+    name: "battery.type.mc_valley",
+    power: 420,
+    duration: 40,
+    icon: mcValleyIcon,
+  },
+  [BatteryType.LC_VALLEY]: {
+    name: "battery.type.lc_valley",
+    power: 220,
+    duration: 40,
+    icon: lcValleyIcon,
+  },
+  [BatteryType.ORIGINIUM]: {
+    name: "battery.type.originium",
+    power: 50,
+    duration: 8,
+    icon: originiumIcon,
+  },
 };
 
 export interface OptimizationResult {
