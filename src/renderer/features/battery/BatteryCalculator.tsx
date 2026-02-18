@@ -1,12 +1,7 @@
 import React, { useState, useMemo } from "react";
 import "./BatteryCalculator.css";
 
-import {
-  BATTERY_DATA,
-  BatteryType,
-  calculatePowerOptimization,
-  OptimizationResult,
-} from "./utils";
+import { BATTERY_DATA, BatteryType, calculatePowerOptimization } from "./utils";
 
 export default function BatteryCalculator() {
   const [target, setTarget] = useState<number>(2775); // Unit test example default

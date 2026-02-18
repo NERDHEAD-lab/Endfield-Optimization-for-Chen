@@ -7,6 +7,7 @@ export const SettingsFeature: IFeatureModule = {
     label: "nav.info",
     description: "settings.description",
     icon: "info",
+    usingKeys: ["app_settings"],
     section: "footer",
     priority: 999,
     component: Settings,

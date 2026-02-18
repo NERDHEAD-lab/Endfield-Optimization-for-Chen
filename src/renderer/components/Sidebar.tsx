@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { IMenuFeature } from "../features/feature.types";
 import { getMenuItems } from "../features";
 import { SidebarItem } from "./SidebarItem";
 import "./Sidebar.css";

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { getMenuItems } from "./features";
 import icon from "./assets/icon.ico";
 import { Sidebar } from "./components/Sidebar";
+import { FeatureContextProvider } from "./context/FeatureContext";
 import "./App.css";
 
 function App() {
@@ -53,15 +54,17 @@ function App() {
       </div>
       <Sidebar activeTabId={activeTabId} onTabChange={setActiveTabId} />
       <main className="content">
-        {activeItem && (
-          <header className="content-header">
-            <h1>{t(activeItem.label)}</h1>
-            {activeItem.description && <p>{t(activeItem.description)}</p>}
-          </header>
-        )}
-        <div className="content-body">
-          <ActiveComponent onNavigate={setActiveTabId} />
-        </div>
+        <FeatureContextProvider activeFeature={activeItem || null}>
+          {activeItem && (
+            <header className="content-header">
+              <h1>{t(activeItem.label)}</h1>
+              {activeItem.description && <p>{t(activeItem.description)}</p>}
+            </header>
+          )}
+          <div className="content-body">
+            <ActiveComponent onNavigate={setActiveTabId} />
+          </div>
+        </FeatureContextProvider>
         <footer className="branding-footer">
           <a
             href="https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen"

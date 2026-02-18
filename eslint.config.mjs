@@ -68,6 +68,31 @@ export default [
         },
       ],
       "@typescript-eslint/no-explicit-any": "warn",
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "CallExpression[callee.object.name='localStorage']",
+          message:
+            "Direct access to localStorage is restricted. Use useFeatureStorage() instead.",
+        },
+        {
+          selector: "MemberExpression[object.name='localStorage']",
+          message:
+            "Direct access to localStorage is restricted. Use useFeatureStorage() instead.",
+        },
+      ],
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "electron-store",
+              message:
+                "Direct import of electron-store is restricted in renderer. Use context-based storage instead.",
+            },
+          ],
+        },
+      ],
     },
   },
   {

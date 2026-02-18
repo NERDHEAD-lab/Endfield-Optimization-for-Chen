@@ -8,6 +8,7 @@ export const BatteryFeature: IFeatureModule = {
     label: "nav.battery",
     description: "battery.description",
     icon: icon,
+    usingKeys: ["battery_settings"],
     section: "body",
     priority: 10,
     component: BatteryCalculator,
