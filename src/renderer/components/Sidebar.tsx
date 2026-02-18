@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { IMenuFeature } from "../features/feature.types";
+
+import { useLauncherContext } from "../context";
 import { getMenuItems } from "../features";
 import { SidebarItem } from "./SidebarItem";
 import "./Sidebar.css";
@@ -10,57 +11,25 @@ interface SidebarProps {
   onTabChange: (id: string) => void;
 }
 
-interface SavedMenuState {
-  order: string[]; // Array of feature IDs
-  favorites: string[]; // Array of feature IDs
-}
-
-const STORAGE_KEY = "endfield_menu_state_v1";
-
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTabId,
   onTabChange,
 }) => {
   useTranslation();
+  const { favorites, customOrder, toggleFavorite, setCustomOrder } =
+    useLauncherContext();
 
   // Initial raw items from registry
   const allFeatures = useMemo(() => getMenuItems(), []);
 
-  // State
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [customOrder, setCustomOrder] = useState<string[]>([]);
-  const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
-
-  // Load state from localStorage on mount
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed: SavedMenuState = JSON.parse(saved);
-        setFavorites(parsed.favorites || []);
-        setCustomOrder(parsed.order || []);
-      }
-    } catch (e) {
-      console.error("Failed to load menu state", e);
-    }
-  }, []);
-
-  // Save state whenever it changes
-  useEffect(() => {
-    const state: SavedMenuState = {
-      order: customOrder,
-      favorites: favorites,
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }, [favorites, customOrder]);
-
-  // Handler: Toggle Favorite
-  const toggleFavorite = (e: React.MouseEvent, id: string) => {
+  // Handler: Toggle Favorite (with propagation stop)
+  const handleToggleFavorite = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id],
-    );
+    toggleFavorite(id);
   };
+
+  // State
+  const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
 
   // Handler: Drag Start
   const handleDragStart = (e: React.DragEvent, id: string) => {
@@ -114,7 +83,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   // 2. Sort by custom order (or priority if no custom order)
   // 3. Sort by Favorites (Favorites always on top)
   const bodyItems = useMemo(() => {
-    let items = allFeatures.filter((f) => f.section === "body");
+    const items = allFeatures.filter((f) => f.section === "body");
 
     // Apply Custom Order
     if (customOrder.length > 0) {
@@ -130,13 +99,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
     }
 
     // Apply Favorites (Favorites float to top)
-    // Note: User asked for favorites to be separate or just "pinned".
-    // Usually pinned items are at the top, sorted amongst themselves, followed by unpinned items.
-    // However, if Drag&Drop is enabled, usually you can drag ANYWHERE.
-    // But the user specifically said "star to pin to top".
-    // So we will partition: [Pinned Items] + [Unpinned Items]
-    // Within Pinned: Maintain custom order? Or priority? Let's assume custom order is preserved relative to each other.
-
     const pinned = items.filter((i) => favorites.includes(i.id));
     const unpinned = items.filter((i) => !favorites.includes(i.id));
 
@@ -180,7 +142,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               isActive={activeTabId === item.id}
               isFavorite={favorites.includes(item.id)}
               onClick={() => onTabChange(item.id)}
-              onToggleFavorite={(e) => toggleFavorite(e, item.id)}
+              onToggleFavorite={(e) => handleToggleFavorite(e, item.id)}
               draggable={true}
               onDragStart={(e) => handleDragStart(e, item.id)}
               onDragOver={handleDragOver}

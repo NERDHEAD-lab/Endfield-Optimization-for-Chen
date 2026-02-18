@@ -1,49 +1,89 @@
 import React, { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import "./BatteryCalculator.css";
 
-import {
-  BATTERY_DATA,
-  BatteryType,
-  calculatePowerOptimization,
-  OptimizationResult,
-} from "./utils";
+import { BATTERY_DATA, BatteryType, calculatePowerOptimization } from "./utils";
 
 export default function BatteryCalculator() {
+  const { t } = useTranslation();
   const [target, setTarget] = useState<number>(2775); // Unit test example default
   const [batteryType, setBatteryType] = useState<BatteryType>(
-    BatteryType.MULUNG_1600,
+    BatteryType.LC_WULING,
   );
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const result = useMemo(() => {
     return calculatePowerOptimization(target, batteryType);
   }, [target, batteryType]);
 
+  const selectedBattery = BATTERY_DATA[batteryType];
+
   return (
     <div className="battery-calculator-container">
       <div className="card input-section">
         <div className="form-group">
-          <label>Target Power (시설 총 전력):</label>
+          <label>{t("battery.target")}</label>
           <input
             type="number"
             value={target}
-            onChange={(e) => setTarget(parseInt(e.target.value) || 0)}
+            onChange={(e) =>
+              setTarget(Number.parseInt(e.target.value, 10) || 0)
+            }
             className="input-field"
           />
         </div>
 
         <div className="form-group">
-          <label>Battery Type (배터리 종류):</label>
-          <select
-            value={batteryType}
-            onChange={(e) => setBatteryType(e.target.value as BatteryType)}
-            className="input-field select-field"
-          >
-            {Object.values(BatteryType).map((type) => (
-              <option key={type} value={type}>
-                {BATTERY_DATA[type].name} ({BATTERY_DATA[type].power}W)
-              </option>
-            ))}
-          </select>
+          <label>{t("battery.type_select")}</label>
+          <div className="custom-dropdown-container">
+            <div
+              className={`custom-dropdown-selected ${isDropdownOpen ? "active" : ""}`}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <img
+                src={selectedBattery.icon}
+                alt=""
+                className="dropdown-icon"
+              />
+              <span className="dropdown-label">
+                {t(selectedBattery.name)} ({selectedBattery.power}W)
+              </span>
+              <span className="material-symbols-outlined expand-icon">
+                {isDropdownOpen ? "expand_less" : "expand_more"}
+              </span>
+            </div>
+
+            {isDropdownOpen && (
+              <>
+                <div
+                  className="dropdown-overlay"
+                  onClick={() => setIsDropdownOpen(false)}
+                />
+                <div className="custom-dropdown-list">
+                  {Object.values(BatteryType).map((type) => (
+                    <div
+                      key={type}
+                      className={`custom-dropdown-item ${batteryType === type ? "selected" : ""}`}
+                      onClick={() => {
+                        setBatteryType(type);
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      <img
+                        src={BATTERY_DATA[type].icon}
+                        alt=""
+                        className="dropdown-icon"
+                      />
+                      <span>
+                        {t(BATTERY_DATA[type].name)} ({BATTERY_DATA[type].power}
+                        W)
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
 

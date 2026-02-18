@@ -173,7 +173,7 @@ textarea {
 .content-body {
   flex: 1;
   overflow-y: auto; /* Scroll only here */
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .p-8 {
@@ -254,10 +254,10 @@ select.input-field {
 
 /* Content Header */
 .content-header {
-  padding: 32px 32px 24px 32px;
+  padding: 20px 24px 16px 24px;
   background-color: #1a1a1a;
   border-bottom: 1px solid #333;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .content-header h1 {
@@ -278,11 +278,11 @@ select.input-field {
 
 /* Branding Footer */
 .branding-footer {
-  padding: 16px;
+  padding: 12px;
   display: flex;
   justify-content: center;
   margin-top: auto;
-  padding-top: 32px;
+  opacity: 0.8;
 }
 
 .branding-link {

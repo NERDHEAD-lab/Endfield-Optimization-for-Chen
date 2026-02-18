@@ -1,6 +1,6 @@
 import { IFeatureModule } from "../feature.types";
 import BatteryCalculator from "./BatteryCalculator";
-import icon from "../../assets/LC Wuling Battery.webp";
+import icon from "../../assets/batteries/lc_wuling.webp";
 
 export const BatteryFeature: IFeatureModule = {
   menu: {
@@ -8,6 +8,7 @@ export const BatteryFeature: IFeatureModule = {
     label: "nav.battery",
     description: "battery.description",
     icon: icon,
+    usingKeys: ["battery_settings"],
     section: "body",
     priority: 10,
     component: BatteryCalculator,

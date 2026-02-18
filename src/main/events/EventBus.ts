@@ -1,4 +1,5 @@
 import { EventEmitter } from "events";
+
 import { AppEvent, EventHandler, EventType } from "./types";
 
 class EventBus extends EventEmitter {

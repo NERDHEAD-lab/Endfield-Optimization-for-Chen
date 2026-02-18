@@ -1,5 +1,7 @@
-import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
+
+import { app, BrowserWindow, ipcMain, shell } from "electron";
+
 import { eventBus } from "./events/EventBus";
 import { EventType } from "./events/types";
 
@@ -27,7 +29,7 @@ function createWindow() {
   // Handle external links
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith("http:") || url.startsWith("https:")) {
-      require("electron").shell.openExternal(url);
+      shell.openExternal(url);
       return { action: "deny" };
     }
     return { action: "allow" };

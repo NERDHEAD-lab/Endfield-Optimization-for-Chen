@@ -1,33 +1,56 @@
+import hcValleyIcon from "../../assets/batteries/hc_valley.webp";
+import lcValleyIcon from "../../assets/batteries/lc_valley.webp";
+import lcWulingIcon from "../../assets/batteries/lc_wuling.webp";
+import mcValleyIcon from "../../assets/batteries/mc_valley.webp";
+import originiumIcon from "../../assets/batteries/originium.webp";
+
 /**
  * 배터리 종류 열거형 (Enum)
  */
 export enum BatteryType {
-  MULUNG_1600 = "MULUNG_1600",
-  VALLEY_1100 = "VALLEY_1100",
-  STANDARD_420 = "STANDARD_420",
-  LIGHT_220 = "LIGHT_220",
-  RAW_ORE_50 = "RAW_ORE_50",
+  LC_WULING = "LC_WULING",
+  HC_VALLEY = "HC_VALLEY",
+  MC_VALLEY = "MC_VALLEY",
+  LC_VALLEY = "LC_VALLEY",
+  ORIGINIUM = "ORIGINIUM",
 }
 
 export const SAFETY_MARGIN_OFFSET = 195;
 
 export const BATTERY_DATA: Record<
   BatteryType,
-  { name: string; power: number; duration: number }
+  { name: string; power: number; duration: number; icon: string }
 > = {
-  [BatteryType.MULUNG_1600]: {
-    name: "무릉 (대용량)",
+  [BatteryType.LC_WULING]: {
+    name: "battery.type.lc_wuling",
     power: 1600,
     duration: 40,
+    icon: lcWulingIcon,
   },
-  [BatteryType.VALLEY_1100]: {
-    name: "협곡 (대용량)",
+  [BatteryType.HC_VALLEY]: {
+    name: "battery.type.hc_valley",
     power: 1100,
     duration: 40,
+    icon: hcValleyIcon,
   },
-  [BatteryType.STANDARD_420]: { name: "표준 키네틱", power: 420, duration: 40 },
-  [BatteryType.LIGHT_220]: { name: "경량 키네틱", power: 220, duration: 40 },
-  [BatteryType.RAW_ORE_50]: { name: "블라이트 원석", power: 50, duration: 8 },
+  [BatteryType.MC_VALLEY]: {
+    name: "battery.type.mc_valley",
+    power: 420,
+    duration: 40,
+    icon: mcValleyIcon,
+  },
+  [BatteryType.LC_VALLEY]: {
+    name: "battery.type.lc_valley",
+    power: 220,
+    duration: 40,
+    icon: lcValleyIcon,
+  },
+  [BatteryType.ORIGINIUM]: {
+    name: "battery.type.originium",
+    power: 50,
+    duration: 8,
+    icon: originiumIcon,
+  },
 };
 
 export interface OptimizationResult {
@@ -35,7 +58,7 @@ export interface OptimizationResult {
   batteryName: string;
   totalPower: number;
 
-  // [추가] 상시 가동해야 하는 배터리 개수 (몫)
+  // 상시 가동해야 하는 배터리 개수
   directRunCount: number;
 
   remainder: number;
@@ -88,7 +111,7 @@ export function calculatePowerOptimization(
       message:
         `[${battery.name}] 분석 결과\n` +
         `--------------------------------\n` +
-        `🔋 상시 가동(직결): **${directRunCount}개**\n` +
+        `🔋 **권장 배치: 상시 가동(직결) ${directRunCount}개**\n` +
         `✨ 나머지가 0입니다. 추가 회로 없이 깔끔하게 떨어집니다.`,
     };
   }
@@ -98,12 +121,13 @@ export function calculatePowerOptimization(
   const targetCycleValue = constant / remainder;
 
   // Case: 값이 24 미만 (직결 권장)
+  // [수정됨] 여기서 몫(directRunCount)에 1을 더해서 합쳐버립니다.
   if (targetCycleValue < 24) {
     return {
       status: "DIRECT_CONNECTION",
       batteryName: battery.name,
       totalPower: targetPower,
-      directRunCount,
+      directRunCount: directRunCount + 1, // <--- 4개 + 1개 = 5개로 통합
       remainder: remainder,
       blueprint: {
         cycleValue: targetCycleValue,
@@ -120,9 +144,8 @@ export function calculatePowerOptimization(
       message:
         `[${battery.name}] 분석 결과\n` +
         `--------------------------------\n` +
-        `🔋 1. 상시 가동(직결): **${directRunCount}개**\n` +
-        `⚡ 2. 추가 가동: **1개** (나머지 ${remainder} 담당)\n` +
-        `   └ ⚠️ 나머지 전력이 너무 커서(효율 낮음) 회로 없이 직접 연결하세요.`,
+        `🔋 **권장 배치: 상시 가동(직결) 총 ${directRunCount + 1}개**\n` +
+        `   └ ⚠️ 나머지 전력(${remainder})이 너무 커서, 마지막 1개도 회로 없이 직접 연결해야 합니다.`,
     };
   }
 

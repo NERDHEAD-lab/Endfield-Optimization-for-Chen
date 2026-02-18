@@ -17,11 +17,14 @@ interface Window {
   electronAPI: {
     minimizeWindow: () => void;
     closeWindow: () => void;
-    getConfig: (key: string) => Promise<any>;
-    setConfig: (key: string, value: any) => Promise<void>;
+    getConfig: (key: string) => Promise<unknown>;
+    setConfig: (key: string, value: unknown) => Promise<void>;
     checkForUpdates: () => void;
     onUpdateAvailable: (callback: (version: string) => void) => void;
-    on: (channel: string, func: (...args: any[]) => void) => void;
-    off: (channel: string, func: (...args: any[]) => void) => void;
+    on: (channel: string, func: (...args: unknown[]) => void) => void;
+    off: (channel: string, func: (...args: unknown[]) => void) => void;
   };
 }
+
+/* eslint-disable no-var */
+declare var electronAPI: Window["electronAPI"];
