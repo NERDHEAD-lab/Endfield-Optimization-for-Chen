@@ -1,0 +1,155 @@
+/* Basic Styling */
+.app-container {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  background-color: #121212;
+  color: #e0e0e0;
+  grid-template-rows: 32px 1fr;
+  grid-template-columns: 250px 1fr;
+  grid-template-areas:
+    "title title"
+    "sidebar content";
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #1e1e1e;
+  border-right: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-bar-drag-region {
+  grid-area: title;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: transparent;
+}
+
+.title-bar-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.title-bar-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+  letter-spacing: 0.5px;
+}
+
+/* Allow interaction with buttons in the drag region if any */
+.title-bar-drag-region button {
+  -webkit-app-region: no-drag;
+  pointer-events: auto;
+}
+
+.sidebar-header {
+  padding: 24px;
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+  color: #dfcf99; /* Theme Accent */
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-menu li:hover {
+  background-color: #2a2a2a;
+}
+
+.sidebar-menu li.active {
+  background-color: #2a2a2a;
+  color: #dfcf99;
+  border-left-color: #dfcf99;
+}
+
+.content {
+  grid-area: content;
+  overflow-y: auto;
+  background-color: #121212;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+h1 {
+  margin-top: 0;
+  color: #dfcf99;
+  border-bottom: 1px solid #333;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Forms & Cards */
+.card {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+}
+
+.result-card {
+  background: #252520;
+  border: 1px solid #dfcf99;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.input-field {
+  width: 100%;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background: #dfcf99;
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.stats p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+}
+
+.warning {
+  color: #ffaa55;
+}
+
+

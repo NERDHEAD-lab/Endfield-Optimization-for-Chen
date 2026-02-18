@@ -1,0 +1,25 @@
+{
+  appId: "com.nerdhead.endfield-optimization",
+  productName: "Endfield Optimization (Chen)",
+  directories: {
+    output: "dist",
+  },
+  files: ["dist-electron/**/*", "dist/**/*"],
+  nsis: {
+    oneClick: false,
+    perMachine: false,
+    allowToChangeInstallationDirectory: true,
+    createDesktopShortcut: true,
+    createStartMenuShortcut: true,
+    shortcutName: "Endfield Optimization",
+  },
+  win: {
+    target: "nsis",
+  },
+  publish: {
+    provider: "github",
+    owner: "NERDHEAD-lab",
+    repo: "Endfield-Optimization-for-Chen",
+    releaseType: "release",
+  },
+}
