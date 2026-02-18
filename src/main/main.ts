@@ -23,6 +23,15 @@ function createWindow() {
     mainWindow.loadFile(path.join(__dirname, "../dist/index.html"));
   }
 
+  // Handle external links
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith("http:") || url.startsWith("https:")) {
+      require("electron").shell.openExternal(url);
+      return { action: "deny" };
+    }
+    return { action: "allow" };
+  });
+
   mainWindow.on("closed", () => {
     mainWindow = null;
   });

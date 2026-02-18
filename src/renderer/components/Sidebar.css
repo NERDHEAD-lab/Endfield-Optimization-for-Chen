@@ -61,7 +61,7 @@
 }
 
 .favorite-btn .material-symbols-outlined {
-  font-size: 18px;
+  font-size: 22px;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
@@ -71,12 +71,15 @@
 }
 
 .sidebar-divider {
-  height: 1px;
-  background-color: #4a4a4a;
-  margin: 12px 16px;
+  height: 2px;
+  background-color: rgba(223, 207, 153, 0.2);
+  margin: 16px 20px;
+  border-radius: 2px;
 }
 
 .body-section {
   flex: 1;
   overflow-y: auto;
 }
+
+

@@ -1,3 +1,25 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Utilities */
+.h-full {
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
 /* Basic Styling */
 .app-container {
   display: grid;
@@ -46,9 +68,63 @@
 }
 
 /* Allow interaction with buttons in the drag region if any */
+/* Allow interaction with buttons in the drag region if any */
 .title-bar-drag-region button {
   -webkit-app-region: no-drag;
   pointer-events: auto;
+}
+
+/* Updated Drag Region Layout */
+.title-bar-drag-region {
+  grid-area: title;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  -webkit-app-region: drag;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0; /* Removing padding as controls touch edge */
+  background: transparent;
+}
+
+.title-bar-content {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+}
+
+.window-controls {
+  display: flex;
+  height: 100%;
+}
+
+.window-control-btn {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  width: 46px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  outline: none;
+}
+
+.window-control-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.window-control-btn.close-btn:hover {
+  background-color: #e81123;
+  color: #fff;
+}
+
+.window-control-btn .material-symbols-outlined {
+  font-size: 16px;
 }
 
 .sidebar-header {
@@ -155,6 +231,41 @@ h1 {
 
 .warning {
   color: #ffaa55;
+}
+
+/* Branding Footer */
+.branding-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.branding-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.branding-link:hover {
+  color: #dfcf99;
+}
+
+.branding-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.branding-link:hover .branding-icon {
+  opacity: 1;
 }
 
 

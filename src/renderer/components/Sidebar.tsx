@@ -21,7 +21,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   activeTabId,
   onTabChange,
 }) => {
-  const { t } = useTranslation();
+  useTranslation();
 
   // Initial raw items from registry
   const allFeatures = useMemo(() => getMenuItems(), []);

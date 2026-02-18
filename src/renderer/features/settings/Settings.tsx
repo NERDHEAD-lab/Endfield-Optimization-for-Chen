@@ -1,30 +1,34 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { IFeatureModule } from "../feature.types";
+
+import githubIcon from "../../assets/icon-github.svg";
 
 const Settings: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className="p-8">
-      <h1>{t("nav.settings")}</h1>
-      <div className="card">
-        <p>
-          Version: v{__APP_VERSION__} ({__APP_HASH__})
-        </p>
-        <p>Developer: NERDHEAD LAB</p>
+    <div className="settings-page p-8 h-full flex flex-col justify-between">
+      <div>
+        <h1>Information</h1>
+        <div className="card">
+          <p>
+            Version: v{__APP_VERSION__} ({__APP_HASH__})
+          </p>
+        </div>
+      </div>
+
+      <div className="branding-footer">
+        <a
+          href="https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="branding-link"
+        >
+          <span>POWERED BY NERDHEAD LAB</span>
+          <img src={githubIcon} alt="GitHub" className="branding-icon" />
+        </a>
       </div>
     </div>
   );
-};
-
-export const SettingsFeature: IFeatureModule = {
-  menu: {
-    id: "settings",
-    label: "nav.settings",
-    section: "footer",
-    priority: 999,
-    component: Settings,
-  },
 };
 
 export default Settings;
