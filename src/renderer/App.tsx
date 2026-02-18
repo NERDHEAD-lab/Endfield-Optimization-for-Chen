@@ -1,54 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-
-import "./App.css";
+import { getMenuItems } from "./features";
 import icon from "./assets/icon.ico";
-
-const Home = () => {
-  const { t } = useTranslation();
-  return (
-    <div className="p-8">
-      <h1>{t("nav.home")}</h1>
-      <p>{t("home.welcome")}</p>
-      <div className="dashboard-grid">
-        <div className="card">
-          <h3>Quick Tools</h3>
-          <ul>
-            <li>Coming Soon...</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Settings = () => (
-  <div className="p-8">
-    <h1>Settings</h1>
-    <div className="card">
-      <p>Version: v{__APP_VERSION__}</p>
-      <p>Commit: {__APP_HASH__}</p>
-      <p>Developer: NERDHEAD LAB</p>
-    </div>
-  </div>
-);
-
-type Tab = "home" | "settings";
+import "./App.css";
 
 function App() {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState<Tab>("home");
+  const menuItems = useMemo(() => getMenuItems(), []);
+  const [activeTabId, setActiveTabId] = useState<string>(
+    menuItems[0]?.id || "home",
+  );
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case "home":
-        return <Home />;
-      case "settings":
-        return <Settings />;
-      default:
-        return <Home />;
-    }
-  };
+  const ActiveComponent = useMemo(() => {
+    const activeItem = menuItems.find((item) => item.id === activeTabId);
+    return activeItem ? activeItem.component : () => <div>Not Found</div>;
+  }, [activeTabId, menuItems]);
+
+  const renderMenuSection = (items: IMenuFeature[]) => (
+    <ul className="sidebar-menu">
+      {items.map((item) => (
+        <li
+          key={item.id}
+          className={activeTabId === item.id ? "active" : ""}
+          onClick={() => setActiveTabId(item.id)}
+        >
+          {t(item.label)}
+        </li>
+      ))}
+    </ul>
+  );
+
+  const headerItems = menuItems.filter((i) => i.section === "header");
+  const bodyItems = menuItems.filter((i) => i.section === "body");
+  const footerItems = menuItems.filter((i) => i.section === "footer");
 
   return (
     <div className="app-container">
@@ -60,22 +44,23 @@ function App() {
         <div className="sidebar-header">
           <h2>Endfield Tool</h2>
         </div>
-        <ul className="sidebar-menu">
-          <li
-            className={activeTab === "home" ? "active" : ""}
-            onClick={() => setActiveTab("home")}
-          >
-            {t("nav.home")}
-          </li>
-          <li
-            className={activeTab === "settings" ? "active" : ""}
-            onClick={() => setActiveTab("settings")}
-          >
-            {t("nav.settings")}
-          </li>
-        </ul>
+
+        {/* Header Section */}
+        {headerItems.length > 0 && renderMenuSection(headerItems)}
+
+        {/* Body Section (Flexible Spacer if needed, simplifies structure for now) */}
+        <div style={{ flex: 1 }}>
+          {bodyItems.length > 0 && renderMenuSection(bodyItems)}
+        </div>
+
+        {/* Footer Section */}
+        {footerItems.length > 0 && (
+          <div className="sidebar-footer">{renderMenuSection(footerItems)}</div>
+        )}
       </nav>
-      <main className="content">{renderContent()}</main>
+      <main className="content">
+        <ActiveComponent />
+      </main>
     </div>
   );
 }

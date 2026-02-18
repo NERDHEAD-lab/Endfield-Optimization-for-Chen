@@ -81,6 +81,11 @@
   border-left-color: #dfcf99;
 }
 
+.sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid #333;
+}
+
 .content {
   grid-area: content;
   overflow-y: auto;

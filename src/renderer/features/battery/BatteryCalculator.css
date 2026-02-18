@@ -1,0 +1,140 @@
+/* Battery Calculator Specific Styles */
+
+.battery-calculator-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.input-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.select-field {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23dfcf99%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 0.65rem auto;
+  appearance: none;
+  padding-right: 2rem;
+}
+
+.result-card {
+  transition: all 0.3s ease;
+  border-left: 5px solid #444;
+}
+
+.result-card.status-optimized {
+  border-left-color: #4caf50;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.1);
+}
+
+.result-card.status-direct_connection {
+  border-left-color: #ff9800; /* Orange */
+}
+
+.result-card.status-no_remainder {
+  border-left-color: #2196f3; /* Blue */
+}
+
+.result-card.status-error {
+  border-left-color: #f44336; /* Red */
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.message-box {
+  white-space: pre-line;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px dashed #555;
+  margin-bottom: 20px;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-item span {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.detail-item strong {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.blueprint-box {
+  background: #1a1a1a;
+  padding: 16px;
+  border-radius: 6px;
+  border-top: 2px solid #dfcf99;
+}
+
+.blueprint-box h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #dfcf99;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.blueprint-row {
+  display: flex;
+  gap: 20px;
+}
+
+.blueprint-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #252525;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.blueprint-item .label {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.blueprint-item .value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
