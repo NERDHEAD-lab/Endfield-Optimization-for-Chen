@@ -8,7 +8,8 @@ interface UpdateModalProps {
   status: UpdateStatus;
   onUpdate: () => void; // Trigger Download
   onInstall: () => void; // Trigger Restart & Install
-  onClose: () => void;
+  onClose: () => void; // Remind me later
+  isOpen: boolean;
 }
 
 const UpdateModal: React.FC<UpdateModalProps> = ({
@@ -16,13 +17,16 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
   onUpdate,
   onInstall,
   onClose,
+  isOpen,
 }) => {
   const { t } = useTranslation();
 
-  const isVisible =
-    status.state !== "idle" || (status.error && status.error.length > 0);
+  // If not open, don't render
+  if (!isOpen) return null;
 
-  if (!isVisible) return null;
+  // Safety check: if status is idle, also don't render (unless we want to show "Up to date" explicitly?)
+  // Usually modal only opens when there is an update or error.
+  if (status.state === "idle" && !status.error) return null;
 
   const getStatusMessage = () => {
     switch (status.state) {
@@ -81,7 +85,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
             )
           )}
           <button className="btn-update-secondary" onClick={onClose}>
-            {t("update.button.close")}
+            {t("update.button.later")}
           </button>
         </div>
       </div>

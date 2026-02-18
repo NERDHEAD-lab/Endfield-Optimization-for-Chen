@@ -35,13 +35,26 @@ function App() {
   const [updateStatus, setUpdateStatus] = useState<UpdateStatus>({
     state: "idle",
   });
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
 
   useEffect(() => {
     document.title = `${t("app.title")} v${__APP_VERSION__}`;
 
     // Listen for update status
     globalThis.electronAPI.on("update-status-change", (status: unknown) => {
-      setUpdateStatus(status as UpdateStatus);
+      const newStatus = status as UpdateStatus;
+      setUpdateStatus(newStatus);
+
+      // Automatically open modal when update is available or downloaded,
+      // BUT ONLY if it wasn't explicitly closed (logic: if state changes to available/downloaded, reopen?)
+      // For simplicity/standard UX: Auto-open on 'available' or 'downloaded' if not already handling.
+      if (
+        newStatus.state === "available" ||
+        newStatus.state === "downloaded" ||
+        newStatus.state === "error"
+      ) {
+        setIsUpdateModalOpen(true);
+      }
     });
 
     // Initial check (silent)
@@ -59,8 +72,15 @@ function App() {
   };
 
   const handleCloseUpdateModal = () => {
-    setUpdateStatus((prev) => ({ ...prev, state: "idle" }));
+    // Just close the modal, enabling the "indicator" logic
+    setIsUpdateModalOpen(false);
   };
+
+  const shouldShowUpdateIndicator =
+    !isUpdateModalOpen &&
+    (updateStatus.state === "available" ||
+      updateStatus.state === "downloaded" ||
+      updateStatus.state === "downloading");
 
   // --- Feature Modal State (Post-Update) ---
   const [modalFeature, setModalFeature] = useState<IMenuFeature | null>(null);
@@ -88,6 +108,7 @@ function App() {
           onUpdate={handleUpdate}
           onInstall={handleInstall}
           onClose={handleCloseUpdateModal}
+          isOpen={isUpdateModalOpen}
         />
 
         {/* Generic Feature Modal */}
@@ -105,6 +126,16 @@ function App() {
             </span>
           </div>
           <div className="window-controls">
+            {shouldShowUpdateIndicator && (
+              <button
+                className="update-indicator-btn"
+                onClick={() => setIsUpdateModalOpen(true)}
+                title={t("update.title")}
+              >
+                <span className="material-symbols-outlined">download</span>
+                UPDATE
+              </button>
+            )}
             <button
               className="window-control-btn minimize-btn"
               onClick={() => globalThis.electronAPI.minimizeWindow()}

@@ -127,6 +127,46 @@ textarea {
   font-size: 16px;
 }
 
+/* Update Indicator Button */
+.update-indicator-btn {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  
+  /* Positioning & Size */
+  margin-right: 15px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  height: 24px;
+  
+  /* Visuals */
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #dfcf99; /* Theme Accent */
+  color: #dfcf99;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  
+  /* Typography */
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  
+  /* Behavior */
+  cursor: pointer;
+  -webkit-app-region: no-drag; /* Critical for interaction */
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.update-indicator-btn:hover {
+  opacity: 1;
+  color: #fff;
+  box-shadow: 0 0 10px #dfcf99;
+  background: rgba(223, 207, 153, 0.2);
+}
+
 .sidebar-header {
   padding: 24px;
   background-color: #1e1e1e;
