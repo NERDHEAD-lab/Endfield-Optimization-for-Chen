@@ -36,6 +36,8 @@ const resources = {
       "patchnotes.title": "패치 노트",
       "patchnotes.loading": "패치 노트 불러오는 중...",
       "patchnotes.view_github": "GitHub에서 보기",
+      "settings.language": "언어 (Language)",
+      "app.lang": "한국어",
     },
   },
   en: {
@@ -71,13 +73,16 @@ const resources = {
       "patchnotes.title": "Patch Notes",
       "patchnotes.loading": "Loading release notes...",
       "patchnotes.view_github": "View on GitHub",
+      "settings.language": "Language",
+      "app.lang": "English",
     },
   },
 };
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ko", // Default
+  // eslint-disable-next-line no-restricted-syntax
+  lng: localStorage.getItem("language") || "ko", // Load from storage or default
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,
