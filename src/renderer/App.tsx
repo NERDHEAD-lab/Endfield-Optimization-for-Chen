@@ -17,7 +17,7 @@ function App() {
   console.log("[App] Rendering App component...");
   console.log("[App] electronAPI availability:", !!globalThis.electronAPI);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const menuItems = useMemo(() => getMenuItems(), []);
   const [activeTabId, setActiveTabId] = useState<string>(
     menuItems[0]?.id || "home",
@@ -83,21 +83,74 @@ function App() {
 
   // --- Feature Modal State (Post-Update) ---
   const [modalFeature, setModalFeature] = useState<IMenuFeature | null>(null);
+  const [modalProps, setModalProps] = useState<Record<string, unknown>>({});
   const { checkVersionUpdate } = useLauncherContext();
 
   useEffect(() => {
-    // Check for post-update (version change) using Context API
-    const isUpdated = checkVersionUpdate();
+    // 1. Listen for Config Changes
+    const cleanupConfig = globalThis.electronAPI.onConfigChange(
+      (key: string, newValue: unknown, oldValue: unknown) => {
+        console.log(
+          `[App] Config changed: ${key} = ${oldValue} -> ${newValue}`,
+        );
+        // 2. Language Change
+        if (key === "language" && typeof newValue === "string") {
+          i18n.changeLanguage(newValue);
+        }
+        // Here you might want to update a local context or state if needed
+        // For now, logging verifies the loop.
+      },
+    );
 
+    // Listen for "SHOW_CHANGELOG" event from Main
+    const cleanupChangelog = globalThis.electronAPI.onShowChangelog((data) => {
+      console.log("[App] Show Changelog Request:", data);
+
+      // Check if data.changelogs is valid
+      if (Array.isArray(data.changelogs) && data.changelogs.length > 0) {
+        // Find PatchNotes feature
+        const patchNotesFeature = menuItems.find((f) => f.id === "patch-notes");
+
+        if (patchNotesFeature) {
+          setModalFeature(patchNotesFeature);
+          // Pass the specific changelog data to the modal
+          setModalProps({ initialNotes: data.changelogs });
+        }
+      }
+    });
+
+    // 3. Fallback: Check for post-update (version change) using Context API (Legacy/Double-check)
+    const isUpdated = checkVersionUpdate();
     if (isUpdated) {
       const patchNotesFeature = menuItems.find(
         (item) => item.id === "patch-notes",
       );
       if (patchNotesFeature) {
         setModalFeature(patchNotesFeature);
+        // No specific data here, PatchNotes component will fetch default latest
       }
     }
-  }, [menuItems, checkVersionUpdate]);
+
+    return () => {
+      cleanupConfig();
+      cleanupChangelog();
+    };
+  }, [menuItems, checkVersionUpdate, i18n]);
+
+  useEffect(() => {
+    // 4. Initial Config Load (Language)
+    globalThis.electronAPI.getConfig("language").then((lang) => {
+      if (lang && typeof lang === "string" && ["ko", "en"].includes(lang)) {
+        if (i18n.language !== lang) {
+          console.log(`[App] Syncing language from store: ${lang}`);
+          i18n.changeLanguage(lang);
+        }
+      }
+    });
+
+    // Notify Main that UI is ready
+    globalThis.electronAPI.send("UI_READY");
+  }, [i18n]);
 
   return (
     <div className="app-container">
@@ -112,8 +165,12 @@ function App() {
       {/* Generic Feature Modal */}
       <FeatureModal
         isOpen={!!modalFeature}
-        onClose={() => setModalFeature(null)}
+        onClose={() => {
+          setModalFeature(null);
+          setModalProps({});
+        }}
         feature={modalFeature}
+        featureProps={modalProps}
       />
 
       <div className="title-bar-drag-region">

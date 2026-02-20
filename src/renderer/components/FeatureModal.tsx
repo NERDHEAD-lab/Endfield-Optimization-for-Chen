@@ -8,12 +8,14 @@ interface FeatureModalProps {
   isOpen: boolean;
   onClose: () => void;
   feature: IMenuFeature | null;
+  featureProps?: Record<string, unknown>;
 }
 
 const FeatureModal: React.FC<FeatureModalProps> = ({
   isOpen,
   onClose,
   feature,
+  featureProps,
 }) => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
@@ -41,7 +43,7 @@ const FeatureModal: React.FC<FeatureModalProps> = ({
           </button>
         </div>
         <div className="feature-modal-body">
-          <FeatureComponent />
+          <FeatureComponent {...featureProps} />
         </div>
       </div>
     </div>

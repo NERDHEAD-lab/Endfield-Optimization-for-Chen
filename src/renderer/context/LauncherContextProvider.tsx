@@ -15,7 +15,6 @@ export const LauncherContextProvider: React.FC<{
   // --- State Initialization (Lazy Load) ---
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
-      /* eslint-disable-next-line no-restricted-syntax */
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed: SavedMenuState = JSON.parse(saved);
@@ -29,7 +28,6 @@ export const LauncherContextProvider: React.FC<{
 
   const [customOrder, setCustomOrder] = useState<string[]>(() => {
     try {
-      /* eslint-disable-next-line no-restricted-syntax */
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed: SavedMenuState = JSON.parse(saved);
@@ -47,7 +45,6 @@ export const LauncherContextProvider: React.FC<{
       order: customOrder,
       favorites,
     };
-    /* eslint-disable-next-line no-restricted-syntax */
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [favorites, customOrder]);
 
@@ -60,12 +57,10 @@ export const LauncherContextProvider: React.FC<{
 
   const checkVersionUpdate = () => {
     try {
-      /* eslint-disable-next-line no-restricted-syntax */
       const lastRunVersion = localStorage.getItem("last_run_version");
       const currentVersion = __APP_VERSION__;
 
       if (lastRunVersion !== currentVersion) {
-        /* eslint-disable-next-line no-restricted-syntax */
         localStorage.setItem("last_run_version", currentVersion);
         return true;
       }
@@ -75,6 +70,11 @@ export const LauncherContextProvider: React.FC<{
     return false;
   };
 
+  const setLanguage = (lang: string) => {
+    localStorage.setItem("language", lang);
+    globalThis.electronAPI.setConfig("language", lang);
+  };
+
   const contextValue = useMemo<LauncherContextValue>(
     () => ({
       favorites,
@@ -82,6 +82,7 @@ export const LauncherContextProvider: React.FC<{
       toggleFavorite,
       setCustomOrder,
       checkVersionUpdate,
+      setLanguage,
     }),
     [favorites, customOrder],
   );

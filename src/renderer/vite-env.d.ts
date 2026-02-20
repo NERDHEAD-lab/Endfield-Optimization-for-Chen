@@ -21,8 +21,18 @@ interface Window {
     send: (channel: string, payload?: unknown) => void;
     on: (channel: string, func: (...args: unknown[]) => void) => void;
     off: (channel: string, func: (...args: unknown[]) => void) => void;
+    onConfigChange: (
+      callback: (key: string, value: unknown, oldValue: unknown) => void,
+    ) => () => void;
+
+    onShowChangelog: (
+      callback: (data: {
+        changelogs: unknown[];
+        oldVersion: string;
+        newVersion: string;
+      }) => void,
+    ) => () => void;
   };
 }
 
-/* eslint-disable no-var */
 declare var electronAPI: Window["electronAPI"];

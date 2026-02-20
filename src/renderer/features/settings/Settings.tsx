@@ -1,8 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { useLauncherContext } from "../../context/LauncherContext";
+
 const Settings: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const { setLanguage } = useLauncherContext();
   return (
     <div className="settings-page flex-1 flex flex-col justify-between">
       <div>
@@ -17,8 +20,7 @@ const Settings: React.FC = () => {
               }`}
               onClick={() => {
                 i18n.changeLanguage("ko");
-                // eslint-disable-next-line no-restricted-syntax
-                localStorage.setItem("language", "ko");
+                setLanguage("ko");
               }}
             >
               {i18n.getFixedT("ko")("app.lang")}
@@ -31,8 +33,7 @@ const Settings: React.FC = () => {
               }`}
               onClick={() => {
                 i18n.changeLanguage("en");
-                // eslint-disable-next-line no-restricted-syntax
-                localStorage.setItem("language", "en");
+                setLanguage("en");
               }}
             >
               {i18n.getFixedT("en")("app.lang")}

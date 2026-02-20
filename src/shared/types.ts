@@ -39,9 +39,11 @@ export interface UpdateStatus {
   error?: string;
 }
 
-export interface ReleaseNote {
+export interface ChangelogItem {
   version: string;
   date: string;
   body: string;
   html_url: string;
 }
+
+export type ReleaseNote = ChangelogItem;

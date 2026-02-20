@@ -81,7 +81,6 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  // eslint-disable-next-line no-restricted-syntax
   lng: localStorage.getItem("language") || "ko", // Load from storage or default
   fallbackLng: "en",
   interpolation: {

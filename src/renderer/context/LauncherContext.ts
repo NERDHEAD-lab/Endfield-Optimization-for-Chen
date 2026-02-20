@@ -7,6 +7,7 @@ export interface LauncherContextValue {
   setCustomOrder: (order: string[]) => void;
   /** Checks if the app version has changed since last run. Returns true if updated. */
   checkVersionUpdate: () => boolean;
+  setLanguage: (lang: string) => void;
 }
 
 export const LauncherContext = createContext<LauncherContextValue | null>(null);

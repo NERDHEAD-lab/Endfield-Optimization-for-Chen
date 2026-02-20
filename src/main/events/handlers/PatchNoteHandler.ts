@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { ReleaseNote } from "../../../shared/types";
 import { logger } from "../../utils/logger";
-import { EventHandler } from "../types";
+import { EventCallback } from "../types";
 
 interface GitHubRelease {
   tag_name: string;
@@ -11,7 +11,7 @@ interface GitHubRelease {
   html_url: string;
 }
 
-export const PatchNoteHandler: EventHandler = async (_payload, context) => {
+export const PatchNoteHandler: EventCallback = async (_payload, context) => {
   const win = context.mainWindow;
   if (!win || win.isDestroyed()) return;
 
@@ -32,7 +32,7 @@ export const PatchNoteHandler: EventHandler = async (_payload, context) => {
       const notes: ReleaseNote[] = response.data.map((release) => ({
         version: release.tag_name.replace(/^v/, ""),
         date: new Date(release.published_at).toLocaleDateString(),
-        body: release.body,
+        body: release.body || "*No content provided*",
         html_url: release.html_url,
       }));
 
