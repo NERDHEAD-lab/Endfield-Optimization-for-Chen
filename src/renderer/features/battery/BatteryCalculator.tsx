@@ -1,20 +1,36 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import "./BatteryCalculator.css";
 
 import { BATTERY_DATA, BatteryType, calculatePowerOptimization } from "./utils";
+import { useFeatureStorage } from "../../hooks/useFeatureStorage";
+import "./BatteryCalculator.css";
 
 export default function BatteryCalculator() {
   const { t } = useTranslation();
-  const [target, setTarget] = useState<number>(2775); // Unit test example default
+  const storage = useFeatureStorage();
+
+  const [target, setTarget] = useState<number>(2775);
   const [batteryType, setBatteryType] = useState<BatteryType>(
     BatteryType.LC_WULING,
   );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  // --- Initialize (Load from unified storage) ---
+  useEffect(() => {
+    const saved = storage.get<{ target: number }>("battery_settings");
+    if (saved && typeof saved.target === "number") {
+      setTarget(saved.target);
+    }
+  }, [storage]);
+
   const result = useMemo(() => {
     return calculatePowerOptimization(target, batteryType);
   }, [target, batteryType]);
+
+  const handleTargetChange = (newTarget: number) => {
+    setTarget(newTarget);
+    storage.set("battery_settings", { target: newTarget });
+  };
 
   const selectedBattery = BATTERY_DATA[batteryType];
 
@@ -27,7 +43,7 @@ export default function BatteryCalculator() {
             type="number"
             value={target}
             onChange={(e) =>
-              setTarget(Number.parseInt(e.target.value, 10) || 0)
+              handleTargetChange(Number.parseInt(e.target.value, 10) || 0)
             }
             className="input-field"
           />

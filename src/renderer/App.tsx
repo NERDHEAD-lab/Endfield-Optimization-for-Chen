@@ -6,7 +6,7 @@ import { UpdateStatus } from "../shared/types";
 import FeatureModal from "./components/FeatureModal";
 import { Sidebar } from "./components/Sidebar";
 import UpdateModal from "./components/UpdateModal";
-import { FeatureContextProvider, useLauncherContext } from "./context";
+import { useLauncherContext } from "./context";
 import { getMenuItems } from "./features";
 import { IMenuFeature } from "./features/feature.types";
 import "./App.css";
@@ -84,7 +84,12 @@ function App() {
   // --- Feature Modal State (Post-Update) ---
   const [modalFeature, setModalFeature] = useState<IMenuFeature | null>(null);
   const [modalProps, setModalProps] = useState<Record<string, unknown>>({});
-  const { checkVersionUpdate } = useLauncherContext();
+  const { checkVersionUpdate, setActiveFeature } = useLauncherContext();
+
+  // Sync activeItem with LauncherContext
+  useEffect(() => {
+    setActiveFeature(activeItem || null);
+  }, [activeItem, setActiveFeature]);
 
   useEffect(() => {
     // 1. Listen for Config Changes
@@ -119,17 +124,19 @@ function App() {
       }
     });
 
-    // 3. Fallback: Check for post-update (version change) using Context API (Legacy/Double-check)
-    const isUpdated = checkVersionUpdate();
-    if (isUpdated) {
-      const patchNotesFeature = menuItems.find(
-        (item) => item.id === "patch-notes",
-      );
-      if (patchNotesFeature) {
-        setModalFeature(patchNotesFeature);
-        // No specific data here, PatchNotes component will fetch default latest
+    // 3. Fallback: Check for post-update (version change) using Context API
+    const checkUpdate = async () => {
+      const isUpdated = await checkVersionUpdate();
+      if (isUpdated) {
+        const patchNotesFeature = menuItems.find(
+          (item) => item.id === "patch-notes",
+        );
+        if (patchNotesFeature) {
+          setModalFeature(patchNotesFeature);
+        }
       }
-    }
+    };
+    checkUpdate();
 
     return () => {
       cleanupConfig();
@@ -209,17 +216,15 @@ function App() {
       </div>
       <Sidebar activeTabId={activeTabId} onTabChange={setActiveTabId} />
       <main className="content">
-        <FeatureContextProvider activeFeature={activeItem || null}>
-          {activeItem && (
-            <header className="content-header">
-              <h1>{t(activeItem.label)}</h1>
-              {activeItem.description && <p>{t(activeItem.description)}</p>}
-            </header>
-          )}
-          <div className="content-body">
-            <ActiveComponent onNavigate={setActiveTabId} />
-          </div>
-        </FeatureContextProvider>
+        {activeItem && (
+          <header className="content-header">
+            <h1>{t(activeItem.label)}</h1>
+            {activeItem.description && <p>{t(activeItem.description)}</p>}
+          </header>
+        )}
+        <div className="content-body">
+          <ActiveComponent onNavigate={setActiveTabId} />
+        </div>
         <footer className="branding-footer">
           <a
             href="https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen"
