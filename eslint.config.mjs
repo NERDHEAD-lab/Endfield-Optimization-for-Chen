@@ -5,6 +5,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import eslintComments from "eslint-plugin-eslint-comments";
 
 export default [
   {
@@ -26,6 +27,7 @@ export default [
       import: importPlugin,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
+      "eslint-comments": eslintComments,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -71,14 +73,34 @@ export default [
       "no-restricted-syntax": [
         "error",
         {
+          selector: "TSImportType",
+          message:
+            "Don't use inline import(...).Type. Import the type at the top of the file instead.",
+        },
+      ],
+      "eslint-comments/no-use": ["error", { allow: ["eslint-enable"] }],
+    },
+  },
+  // Renderer Specific Rules (Restrict Storage & Imports)
+  {
+    files: ["src/renderer/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "TSImportType",
+          message:
+            "Don't use inline import(...).Type. Import the type at the top of the file instead.",
+        },
+        {
           selector: "CallExpression[callee.object.name='localStorage']",
           message:
-            "Direct access to localStorage is restricted. Use useFeatureStorage() instead.",
+            "Direct access to localStorage is restricted. Use useFeatureStorage() or LauncherContext instead.",
         },
         {
           selector: "MemberExpression[object.name='localStorage']",
           message:
-            "Direct access to localStorage is restricted. Use useFeatureStorage() instead.",
+            "Direct access to localStorage is restricted. Use useFeatureStorage() or LauncherContext instead.",
         },
       ],
       "no-restricted-imports": [
@@ -95,6 +117,45 @@ export default [
       ],
     },
   },
+  // Main/Shared Specific Import Restrictions
+  {
+    files: ["src/main/**/*.ts", "src/shared/**/*.ts"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "../store",
+              importNames: ["setConfig", "deleteConfig"],
+              message:
+                "CONFIRMED: Use 'setConfigWithEvent' or 'deleteConfigWithEvent' from 'utils/config-utils' to ensure UI updates.",
+            },
+            {
+              name: "../../store",
+              importNames: ["setConfig", "deleteConfig"],
+              message:
+                "CONFIRMED: Use 'setConfigWithEvent' or 'deleteConfigWithEvent' from 'utils/config-utils' to ensure UI updates.",
+            },
+            {
+              name: "./store",
+              importNames: ["setConfig", "deleteConfig"],
+              message:
+                "CONFIRMED: Use 'setConfigWithEvent' or 'deleteConfigWithEvent' from 'utils/config-utils' to ensure UI updates.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  // Exceptions for Config Utilities (Allow store access)
+  {
+    files: ["src/main/utils/config-utils.ts"],
+    rules: {
+      "no-restricted-imports": "off",
+    },
+  },
+  // JS/JSX Specific Rules
   {
     files: ["**/*.js", "**/*.jsx"],
     languageOptions: {
@@ -128,6 +189,31 @@ export default [
         },
       ],
       "import/newline-after-import": ["error", { count: 1 }],
+    },
+  },
+  // Exceptions for Storage Providers (Allow localStorage)
+  {
+    files: [
+      "src/renderer/context/LauncherContextProvider.tsx",
+      "src/renderer/context/FeatureContextProvider.tsx",
+      "src/renderer/i18n/index.ts",
+    ],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "TSImportType",
+          message:
+            "Don't use inline import(...).Type. Import the type at the top of the file instead.",
+        },
+      ],
+    },
+  },
+  // Type Definition Exceptions
+  {
+    files: ["**/*.d.ts"],
+    rules: {
+      "no-var": "off",
     },
   },
   prettier,

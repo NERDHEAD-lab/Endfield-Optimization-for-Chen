@@ -4,7 +4,7 @@ import { autoUpdater } from "electron-updater";
 
 import { UpdateStatus } from "../../../shared/types";
 import { logger } from "../../utils/logger";
-import { AppContext, EventHandler } from "../types";
+import { AppContext, EventCallback } from "../types";
 
 // Configure autoUpdater
 autoUpdater.autoDownload = false; // Manual download trigger required
@@ -199,7 +199,7 @@ export const triggerUpdateCheck = async (
 /**
  * Handler: Check for Updates
  */
-export const UpdateCheckHandler: EventHandler<{ isSilent?: boolean }> = async (
+export const UpdateCheckHandler: EventCallback<{ isSilent?: boolean }> = async (
   payload,
   context,
 ) => {
@@ -210,7 +210,7 @@ export const UpdateCheckHandler: EventHandler<{ isSilent?: boolean }> = async (
 /**
  * Handler: Start Download
  */
-export const UpdateDownloadHandler: EventHandler = async (
+export const UpdateDownloadHandler: EventCallback = async (
   _payload,
   context,
 ) => {
@@ -223,12 +223,14 @@ export const UpdateDownloadHandler: EventHandler = async (
 /**
  * Handler: Install & Restart
  */
-export const UpdateInstallHandler: EventHandler = async (
+export const UpdateInstallHandler: EventCallback = async (
   _payload,
   _context,
 ) => {
   logger.log(
-    `[UpdateHandler] Requesting install & quit... (Current EXE: ${app.getPath("exe")})`,
+    `[UpdateHandler] Requesting install & quit... (Current EXE: ${app.getPath(
+      "exe",
+    )})`,
   );
 
   if (!app.isPackaged && process.env.VITE_DEV_SERVER_URL) {

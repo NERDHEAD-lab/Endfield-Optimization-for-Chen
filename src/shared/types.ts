@@ -9,6 +9,11 @@ export interface AppConfig {
   afkOverlayOpacity: number; // 0.0 - 1.0
   afkInputLock: boolean;
 
+  // UI/Launcher Persistence
+  favorites: string[];
+  customOrder: string[];
+  featureData: Record<string, Record<string, unknown>>;
+
   // System
   launcherVersion: string;
   autoUpdate: boolean;
@@ -17,9 +22,12 @@ export interface AppConfig {
 export const DEFAULT_CONFIG: AppConfig = {
   theme: "system",
   language: "ko",
-  batteryTarget: 1000,
+  batteryTarget: 2775,
   afkOverlayOpacity: 1.0,
   afkInputLock: true,
+  favorites: [],
+  customOrder: [],
+  featureData: {},
   launcherVersion: "0.0.0",
   autoUpdate: true,
 };
@@ -39,9 +47,11 @@ export interface UpdateStatus {
   error?: string;
 }
 
-export interface ReleaseNote {
+export interface ChangelogItem {
   version: string;
   date: string;
   body: string;
   html_url: string;
 }
+
+export type ReleaseNote = ChangelogItem;

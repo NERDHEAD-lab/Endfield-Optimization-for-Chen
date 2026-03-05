@@ -1,14 +1,10 @@
-import { EventEmitter } from "events";
+import { AppContext, AppEvent, EventHandler, EventType } from "./types";
 
-import { AppEvent, EventHandler, EventType } from "./types";
-
-class EventBus extends EventEmitter {
+class EventBus {
   private static instance: EventBus;
+  private handlers: EventHandler<unknown>[] = [];
 
-  private constructor() {
-    super();
-    this.setMaxListeners(20);
-  }
+  private constructor() {}
 
   public static getInstance(): EventBus {
     if (!EventBus.instance) {
@@ -17,21 +13,37 @@ class EventBus extends EventEmitter {
     return EventBus.instance;
   }
 
-  public emitEvent<T>(type: EventType, payload: T) {
+  registerHandler<T>(handler: EventHandler<T>): void {
+    this.handlers.push(handler as unknown as EventHandler<unknown>);
+  }
+
+  unregisterHandler(handlerId: string): void {
+    this.handlers = this.handlers.filter((h) => h.id !== handlerId);
+  }
+
+  emit<T = unknown>(type: EventType, context: AppContext, payload: T): void {
     const event: AppEvent<T> = {
       type,
       payload,
       timestamp: Date.now(),
     };
-    this.emit(type, event);
-  }
 
-  public onEvent<T>(type: EventType, handler: EventHandler<AppEvent<T>>) {
-    this.on(type, handler);
-  }
+    const relevantHandlers = this.handlers.filter(
+      (h) => h.targetEvent === type,
+    );
 
-  public offEvent<T>(type: EventType, handler: EventHandler<AppEvent<T>>) {
-    this.removeListener(type, handler);
+    relevantHandlers.forEach((handler) => {
+      try {
+        // Type assertion for handler to match the payload type
+        // This is safe because we filter by targetEvent
+        if (handler.condition && !handler.condition(event)) {
+          return;
+        }
+        handler.handle(event, context);
+      } catch (error) {
+        console.error(`Error in handler ${handler.id}:`, error);
+      }
+    });
   }
 }
 

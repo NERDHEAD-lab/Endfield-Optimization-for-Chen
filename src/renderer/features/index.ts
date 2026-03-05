@@ -1,4 +1,5 @@
 import { BatteryFeature } from "./battery";
+import { EquipmentFeature } from "./equipment";
 import { IMenuFeature } from "./feature.types";
 import { HomeFeature } from "./home";
 import { PatchNotesFeature } from "./patchnotes";
@@ -8,6 +9,7 @@ export const features = [
   HomeFeature,
   SettingsFeature,
   BatteryFeature,
+  EquipmentFeature,
   PatchNotesFeature,
 ];
 

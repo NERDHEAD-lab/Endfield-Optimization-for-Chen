@@ -4,17 +4,29 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { ReleaseNote } from "../../../shared/types";
+import { IFeatureComponentProps } from "../feature.types";
 import "./PatchNotes.css"; // We will create this or use existing styles
 
-const PatchNotes: React.FC = () => {
+interface PatchNotesProps extends IFeatureComponentProps {
+  initialNotes?: ReleaseNote[];
+}
+
+const PatchNotes: React.FC<PatchNotesProps> = ({ initialNotes }) => {
   const { t } = useTranslation();
-  const [notes, setNotes] = useState<ReleaseNote[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [notes, setNotes] = useState<ReleaseNote[]>(initialNotes || []);
+  const [loading, setLoading] = useState(!initialNotes);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // If we already have notes passed via props, we don't need to fetch immediately.
+    // However, we might want to listen for updates or if initialNotes was empty.
+    if (initialNotes && initialNotes.length > 0) {
+      return;
+    }
+
     // Handler for data
     const handleData = (data: unknown) => {
+      console.log("[PatchNotes] Received data:", data);
       setNotes(data as ReleaseNote[]);
       setLoading(false);
     };
@@ -38,7 +50,7 @@ const PatchNotes: React.FC = () => {
       globalThis.electronAPI.off("patch-notes-data", handleData);
       globalThis.electronAPI.off("patch-notes-error", handleError);
     };
-  }, []);
+  }, [initialNotes]);
 
   if (loading) {
     return (

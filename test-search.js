@@ -1,0 +1,1 @@
+const axios = require("axios"); const ch = require("cheerio"); axios.get("https://html.duckduckgo.com/html/?q=arknights+endfield+equipment+types+component").then(r => { const $ = ch.load(r.data); let txt = ""; $(".result__snippet").each((i, el) => { txt += $(el).text() + " "; }); console.log(txt.substring(0, 1000)); }).catch(console.error);
