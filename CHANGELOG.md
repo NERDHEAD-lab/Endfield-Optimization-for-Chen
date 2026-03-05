@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.0](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/compare/0.1.1...0.2.0) (2026-03-05)
+
+
+### Features
+
+* 언어 변경 기능 추가 ([fb3f0fe](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/fb3f0fee2b5b00718519be30f564a5744e188a16))
+* 장비 식각 효율 기능 추가 - 1 ([e8fc2e7](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/e8fc2e73182b2b5ea2cfd15bcebbad5a2db380fc))
+* 장비 식각 효율 기능 추가 - 2 ([7c7eb6a](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/7c7eb6a170f220d625d925718d59b7fecf288eeb))
+* 장비 식각 효율 기능 추가 - 3 ([42ac643](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/42ac6439934c6c4e56c4e1285643439c0b7df2f1))
+* 장비 식각 효율 기능 추가 - 4 ([e7e6b45](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/e7e6b45432c6c7b8659e8e6c67fbfef8636687cf))
+
+
+### Bug Fixes
+
+* 창 최소화/닫기가 동작하지 않는 문제 수정 ([8292ba2](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/commit/8292ba2a70162ce80586d2bc1e6e0f1fe758f5d8))
+
 ## [0.1.1](https://github.com/NERDHEAD-lab/Endfield-Optimization-for-Chen/compare/0.1.0...0.1.1) (2026-02-18)
 
 
