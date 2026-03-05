@@ -115,11 +115,21 @@
 }
 
 /* 티어별 헤더 색상 */
-.tier5 { background-color: #ffba03; } /* 노랑 */
-.tier4 { background-color: #9451f8; } /* 보라 */
-.tier3 { background-color: #0080ff; } /* 파랑 */
-.tier2 { background-color: #1cc88a; } /* 초록 */
-.tier1 { background-color: #858796; } /* 회색/흰색 */
+.tier5 {
+  background-color: #ffba03;
+} /* 노랑 */
+.tier4 {
+  background-color: #9451f8;
+} /* 보라 */
+.tier3 {
+  background-color: #0080ff;
+} /* 파랑 */
+.tier2 {
+  background-color: #1cc88a;
+} /* 초록 */
+.tier1 {
+  background-color: #858796;
+} /* 회색/흰색 */
 
 .cardHeader {
   padding: 14px 18px;
@@ -203,14 +213,16 @@
   border-collapse: collapse;
 }
 
-.statRow, .effectRow {
+.statRow,
+.effectRow {
   height: 44px;
   border-bottom: 1px solid #f1f3f5;
   cursor: pointer;
   transition: background-color 0.1s;
 }
 
-.statRow:hover, .effectRow:hover {
+.statRow:hover,
+.effectRow:hover {
   background-color: #f1f3f5;
 }
 
@@ -248,7 +260,10 @@
 /* 모달 스타일 생략 (기존 유지 혹은 추후 개선) */
 .modalOverlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
@@ -264,16 +279,106 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #adb5bd;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px;
+  line-height: 1;
+}
+
+.modalCloseBtn:hover {
+  color: #495057;
 }
 
 .modalHeader {
-  padding: 20px;
+  padding: 24px 24px 20px;
   background: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
 }
 
+.modalHeader h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #343a40;
+  font-weight: 700;
+}
+
+.modalHeader p {
+  margin: 0;
+  font-size: 14px;
+  color: #868e96;
+}
+
+.modalHeader strong {
+  color: #e64980;
+}
+
 .modalBody {
-  padding: 20px;
-  max-height: 400px;
+  padding: 0;
+  max-height: 480px;
   overflow-y: auto;
+}
+
+.recommendList {
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f3f5;
+  transition: background-color 0.2s;
+}
+
+.recommendItem:hover {
+  background-color: #f8f9fa;
+}
+
+.recommendItem:last-child {
+  border-bottom: none;
+}
+
+.recItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recItemName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #343a40;
+}
+
+.recItemLevel {
+  font-size: 13px;
+  color: #868e96;
+}
+
+.recItemValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0080ff;
+}
+
+.noRecommend {
+  padding: 40px 20px;
+  text-align: center;
+  color: #868e96;
+  font-size: 14px;
 }
