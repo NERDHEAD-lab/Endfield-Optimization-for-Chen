@@ -21,7 +21,8 @@
         "value": 46,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BASIC_ARMOR.webp"
   },
   "BASIC_PPE": {
     "id": "BASIC_PPE",
@@ -45,7 +46,8 @@
         "value": 46,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BASIC_PPE.webp"
   },
   "BASIC_GAUNTLETS": {
     "id": "BASIC_GAUNTLETS",
@@ -69,7 +71,8 @@
         "value": 77,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BASIC_GAUNTLETS.webp"
   },
   "BASIC_GLOVES": {
     "id": "BASIC_GLOVES",
@@ -93,7 +96,8 @@
         "value": 77,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BASIC_GLOVES.webp"
   },
   "MINER_GAUNTLETS": {
     "id": "MINER_GAUNTLETS",
@@ -117,7 +121,8 @@
         "value": 11,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_GAUNTLETS.webp"
   },
   "MINER_GLOVES": {
     "id": "MINER_GLOVES",
@@ -141,7 +146,8 @@
         "value": 11,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_GLOVES.webp"
   },
   "EMERGENCY_COMM": {
     "id": "EMERGENCY_COMM",
@@ -156,7 +162,8 @@
         "value": 6.6,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/EMERGENCY_COMM.webp"
   },
   "EMERGENCY_COMPRESSION_CORE": {
     "id": "EMERGENCY_COMPRESSION_CORE",
@@ -171,7 +178,8 @@
         "value": 13.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/EMERGENCY_COMPRESSION_CORE.webp"
   },
   "MINER_ARMOR": {
     "id": "MINER_ARMOR",
@@ -195,7 +203,8 @@
         "value": 125,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_ARMOR.webp"
   },
   "MINER_OVERALLS": {
     "id": "MINER_OVERALLS",
@@ -219,7 +228,8 @@
         "value": 125,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_OVERALLS.webp"
   },
   "MINER_CLEANSUIT": {
     "id": "MINER_CLEANSUIT",
@@ -243,7 +253,8 @@
         "value": 9,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_CLEANSUIT.webp"
   },
   "MINER_VEST": {
     "id": "MINER_VEST",
@@ -267,7 +278,8 @@
         "value": 9,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_VEST.webp"
   },
   "PROTOTYPE_HEAVY_ARMOR": {
     "id": "PROTOTYPE_HEAVY_ARMOR",
@@ -291,7 +303,8 @@
         "value": 11,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/PROTOTYPE_HEAVY_ARMOR.webp"
   },
   "PROTOTYPE_HEAVY_ARMOR_T1": {
     "id": "PROTOTYPE_HEAVY_ARMOR_T1",
@@ -315,7 +328,8 @@
         "value": 11,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/PROTOTYPE_HEAVY_ARMOR_T1.webp"
   },
   "MINER_FISTS": {
     "id": "MINER_FISTS",
@@ -339,7 +353,8 @@
         "value": 15,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_FISTS.webp"
   },
   "MINER_WRISTS": {
     "id": "MINER_WRISTS",
@@ -363,7 +378,8 @@
         "value": 15,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_WRISTS.webp"
   },
   "AIC_ALLOY_PLATE": {
     "id": "AIC_ALLOY_PLATE",
@@ -383,7 +399,8 @@
         "value": 7.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_ALLOY_PLATE.webp"
   },
   "AIC_HEAVY_PLATE": {
     "id": "AIC_HEAVY_PLATE",
@@ -403,7 +420,8 @@
         "value": 7.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_HEAVY_PLATE.webp"
   },
   "AIC_CERAMIC_PLATE": {
     "id": "AIC_CERAMIC_PLATE",
@@ -423,7 +441,8 @@
         "value": 16.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_CERAMIC_PLATE.webp"
   },
   "AIC_LIGHT_PLATE": {
     "id": "AIC_LIGHT_PLATE",
@@ -443,7 +462,8 @@
         "value": 16.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_LIGHT_PLATE.webp"
   },
   "AIC_LIGHT_ARMOR": {
     "id": "AIC_LIGHT_ARMOR",
@@ -467,7 +487,8 @@
         "value": 8.1,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_LIGHT_ARMOR.webp"
   },
   "AIC_HEAVY_ARMOR": {
     "id": "AIC_HEAVY_ARMOR",
@@ -491,7 +512,8 @@
         "value": 3.9,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_HEAVY_ARMOR.webp"
   },
   "AIC_TACTICAL_GLOVES": {
     "id": "AIC_TACTICAL_GLOVES",
@@ -515,7 +537,8 @@
         "value": 13.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_TACTICAL_GLOVES.webp"
   },
   "AIC_GAUNTLETS": {
     "id": "AIC_GAUNTLETS",
@@ -539,7 +562,8 @@
         "value": 6.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AIC_GAUNTLETS.webp"
   },
   "ROVING_MSGR_JACKET": {
     "id": "ROVING_MSGR_JACKET",
@@ -563,7 +587,8 @@
         "value": 16,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ROVING_MSGR_JACKET.webp"
   },
   "ARMORED_MSGR_JACKET": {
     "id": "ARMORED_MSGR_JACKET",
@@ -587,7 +612,8 @@
         "value": 10.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_JACKET.webp"
   },
   "MORDVOLT_RESISTANT_VEST": {
     "id": "MORDVOLT_RESISTANT_VEST",
@@ -611,7 +637,8 @@
         "value": 10.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_RESISTANT_VEST.webp"
   },
   "MORDVOLT_INSULATION_VEST": {
     "id": "MORDVOLT_INSULATION_VEST",
@@ -635,7 +662,8 @@
         "value": 16,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_VEST.webp"
   },
   "MINER_GLOVES_T1": {
     "id": "MINER_GLOVES_T1",
@@ -659,7 +687,8 @@
         "value": 19,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_GLOVES_T1.webp"
   },
   "MINER_GAUNTLETS_T1": {
     "id": "MINER_GAUNTLETS_T1",
@@ -683,7 +712,8 @@
         "value": 9.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_GAUNTLETS_T1.webp"
   },
   "ROVING_MSGR_FISTS": {
     "id": "ROVING_MSGR_FISTS",
@@ -707,7 +737,8 @@
         "value": 9.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ROVING_MSGR_FISTS.webp"
   },
   "ARMORED_MSGR_GLOVES": {
     "id": "ARMORED_MSGR_GLOVES",
@@ -731,7 +762,8 @@
         "value": 8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_GLOVES.webp"
   },
   "MORDVOLT_RESISTANT_GLOVES": {
     "id": "MORDVOLT_RESISTANT_GLOVES",
@@ -755,7 +787,8 @@
         "value": 8.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_RESISTANT_GLOVES.webp"
   },
   "MORDVOLT_INSULATION_GLOVES": {
     "id": "MORDVOLT_INSULATION_GLOVES",
@@ -779,7 +812,8 @@
         "value": 9.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_GLOVES.webp"
   },
   "ARMORED_MSGR_FLASHLIGHT": {
     "id": "ARMORED_MSGR_FLASHLIGHT",
@@ -799,7 +833,8 @@
         "value": 21,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_FLASHLIGHT.webp"
   },
   "ROVING_MSGR_FLASHLIGHT": {
     "id": "ROVING_MSGR_FLASHLIGHT",
@@ -819,7 +854,8 @@
         "value": 21,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ROVING_MSGR_FLASHLIGHT.webp"
   },
   "MORDVOLT_INSULATION_WRENCH_T1": {
     "id": "MORDVOLT_INSULATION_WRENCH_T1",
@@ -839,7 +875,8 @@
         "value": 11.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_WRENCH_T1.webp"
   },
   "MINER_TURBINE": {
     "id": "MINER_TURBINE",
@@ -859,27 +896,8 @@
         "value": 22.8,
         "isPercentage": true
       }
-    ]
-  },
-  "MINER_DRIVER_WHEEL": {
-    "id": "MINER_DRIVER_WHEEL",
-    "tier": 3,
-    "level": 36,
-    "type": "KIT",
-    "set": "Miner β Gear Pack",
-    "stats": [
-      {
-        "type": "AGILITY",
-        "value": 22
-      }
     ],
-    "effects": [
-      {
-        "type": "CRIT_RATE",
-        "value": 5.7,
-        "isPercentage": true
-      }
-    ]
+    "imgUrl": "assets/equipment/MINER_TURBINE.webp"
   },
   "MINER_COMPRESSION_CORE": {
     "id": "MINER_COMPRESSION_CORE",
@@ -899,7 +917,8 @@
         "value": 5.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_COMPRESSION_CORE.webp"
   },
   "MINER_COMM": {
     "id": "MINER_COMM",
@@ -919,7 +938,8 @@
         "value": 22.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_COMM.webp"
   },
   "ROVING_MSGR_GYRO": {
     "id": "ROVING_MSGR_GYRO",
@@ -939,7 +959,8 @@
         "value": 10.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ROVING_MSGR_GYRO.webp"
   },
   "ARMORED_MSGR_GYRO": {
     "id": "ARMORED_MSGR_GYRO",
@@ -959,7 +980,8 @@
         "value": 10.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_GYRO.webp"
   },
   "MORDVOLT_RESISTANT_WRENCH": {
     "id": "MORDVOLT_RESISTANT_WRENCH",
@@ -979,7 +1001,8 @@
         "value": 10.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_RESISTANT_WRENCH.webp"
   },
   "MORDVOLT_RESISTANT_BATTERY": {
     "id": "MORDVOLT_RESISTANT_BATTERY",
@@ -999,7 +1022,8 @@
         "value": 10.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_RESISTANT_BATTERY.webp"
   },
   "MORDVOLT_INSULATION_BATTERY": {
     "id": "MORDVOLT_INSULATION_BATTERY",
@@ -1019,7 +1043,8 @@
         "value": 5.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_BATTERY.webp"
   },
   "MORDVOLT_INSULATION_WRENCH": {
     "id": "MORDVOLT_INSULATION_WRENCH",
@@ -1039,7 +1064,8 @@
         "value": 10.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_WRENCH.webp"
   },
   "ABURREY_HEAVY_ARMOR": {
     "id": "ABURREY_HEAVY_ARMOR",
@@ -1063,7 +1089,8 @@
         "value": 9.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_HEAVY_ARMOR.webp"
   },
   "ABURREY_HEAVY_ARMOR_T1": {
     "id": "ABURREY_HEAVY_ARMOR_T1",
@@ -1087,7 +1114,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_HEAVY_ARMOR_T1.webp"
   },
   "ABURREY_LIGHT_ARMOR": {
     "id": "ABURREY_LIGHT_ARMOR",
@@ -1111,7 +1139,8 @@
         "value": 8.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_LIGHT_ARMOR.webp"
   },
   "ABURREY_LIGHT_ARMOR_T1": {
     "id": "ABURREY_LIGHT_ARMOR_T1",
@@ -1135,7 +1164,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_LIGHT_ARMOR_T1.webp"
   },
   "CATASTROPHE_HEAVY_ARMOR": {
     "id": "CATASTROPHE_HEAVY_ARMOR",
@@ -1159,7 +1189,8 @@
         "value": 18.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/CATASTROPHE_HEAVY_ARMOR.webp"
   },
   "CATASTROPHE_HEAVY_ARMOR_T1": {
     "id": "CATASTROPHE_HEAVY_ARMOR_T1",
@@ -1183,7 +1214,8 @@
         "value": 8.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/CATASTROPHE_HEAVY_ARMOR_T1.webp"
   },
   "ARMORED_MSGR_JACKET_T1": {
     "id": "ARMORED_MSGR_JACKET_T1",
@@ -1207,7 +1239,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_JACKET_T1.webp"
   },
   "ROVING_MSGR_JACKET_T1": {
     "id": "ROVING_MSGR_JACKET_T1",
@@ -1231,7 +1264,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ROVING_MSGR_JACKET_T1.webp"
   },
   "MORDVOLT_INSULATION_VEST_T2": {
     "id": "MORDVOLT_INSULATION_VEST_T2",
@@ -1255,7 +1289,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_VEST_T2.webp"
   },
   "MORDVOLT_INSULATION_VEST_T1": {
     "id": "MORDVOLT_INSULATION_VEST_T1",
@@ -1279,7 +1314,8 @@
         "value": 9.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_VEST_T1.webp"
   },
   "MORDVOLT_RESISTANT_VEST_T1": {
     "id": "MORDVOLT_RESISTANT_VEST_T1",
@@ -1303,7 +1339,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_RESISTANT_VEST_T1.webp"
   },
   "CATASTROPHE_GLOVES": {
     "id": "CATASTROPHE_GLOVES",
@@ -1327,7 +1364,8 @@
         "value": 24.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/CATASTROPHE_GLOVES.webp"
   },
   "CATASTROPHE_FILTER": {
     "id": "CATASTROPHE_FILTER",
@@ -1351,7 +1389,8 @@
         "value": 29,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/CATASTROPHE_FILTER.webp"
   },
   "CATASTROPHE_GAUZE_CARTRIDGE_T1": {
     "id": "CATASTROPHE_GAUZE_CARTRIDGE_T1",
@@ -1375,7 +1414,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/CATASTROPHE_GAUZE_CARTRIDGE_T1.webp"
   },
   "CATASTROPHE_GAUZE_CARTRIDGE": {
     "id": "CATASTROPHE_GAUZE_CARTRIDGE",
@@ -1399,7 +1439,8 @@
         "value": 36.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/CATASTROPHE_GAUZE_CARTRIDGE.webp"
   },
   "ABURREY_AUDITORY_CHIP": {
     "id": "ABURREY_AUDITORY_CHIP",
@@ -1423,7 +1464,8 @@
         "value": 29.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_AUDITORY_CHIP.webp"
   },
   "ABURREY_AUDITORY_CHIP_T1": {
     "id": "ABURREY_AUDITORY_CHIP_T1",
@@ -1447,7 +1489,8 @@
         "value": 29.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_AUDITORY_CHIP_T1.webp"
   },
   "ABURREY_SENSORY_CHIP": {
     "id": "ABURREY_SENSORY_CHIP",
@@ -1471,7 +1514,8 @@
         "value": 29.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_SENSORY_CHIP.webp"
   },
   "MINER_ARMOR_T1": {
     "id": "MINER_ARMOR_T1",
@@ -1495,7 +1539,8 @@
         "value": 3.9,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_ARMOR_T1.webp"
   },
   "MINER_OVERALLS_T1": {
     "id": "MINER_OVERALLS_T1",
@@ -1519,7 +1564,8 @@
         "value": 7.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_OVERALLS_T1.webp"
   },
   "MINER_GLOVES_T2": {
     "id": "MINER_GLOVES_T2",
@@ -1543,7 +1589,8 @@
         "value": 13,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_GLOVES_T2.webp"
   },
   "MINER_FISTS_T1": {
     "id": "MINER_FISTS_T1",
@@ -1567,7 +1614,8 @@
         "value": 15.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MINER_FISTS_T1.webp"
   },
   "ARMORED_MSGR_GLOVES_T2": {
     "id": "ARMORED_MSGR_GLOVES_T2",
@@ -1591,7 +1639,8 @@
         "value": 24.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_GLOVES_T2.webp"
   },
   "ARMORED_MSGR_GLOVES_T1": {
     "id": "ARMORED_MSGR_GLOVES_T1",
@@ -1615,7 +1664,8 @@
         "value": 12.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_GLOVES_T1.webp"
   },
   "ARMORED_MSGR_FLASHLIGHT_T1": {
     "id": "ARMORED_MSGR_FLASHLIGHT_T1",
@@ -1639,7 +1689,8 @@
         "value": 7.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_FLASHLIGHT_T1.webp"
   },
   "ARMORED_MSGR_GYRO_T1": {
     "id": "ARMORED_MSGR_GYRO_T1",
@@ -1663,7 +1714,8 @@
         "value": 14.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ARMORED_MSGR_GYRO_T1.webp"
   },
   "ROVING_MSGR_FISTS_T1": {
     "id": "ROVING_MSGR_FISTS_T1",
@@ -1687,7 +1739,8 @@
         "value": 12.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ROVING_MSGR_FISTS_T1.webp"
   },
   "MORDVOLT_INSULATION_GLOVES_T1": {
     "id": "MORDVOLT_INSULATION_GLOVES_T1",
@@ -1711,7 +1764,8 @@
         "value": 12.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_INSULATION_GLOVES_T1.webp"
   },
   "MORDVOLT_RESISTANT_GLOVES_T1": {
     "id": "MORDVOLT_RESISTANT_GLOVES_T1",
@@ -1735,7 +1789,8 @@
         "value": 12.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MORDVOLT_RESISTANT_GLOVES_T1.webp"
   },
   "ABURREY_GAUNTLETS": {
     "id": "ABURREY_GAUNTLETS",
@@ -1759,7 +1814,8 @@
         "value": 24.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_GAUNTLETS.webp"
   },
   "ABURREY_SENSOR_CHIP_T1": {
     "id": "ABURREY_SENSOR_CHIP_T1",
@@ -1783,7 +1839,8 @@
         "value": 29.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ABURREY_SENSOR_CHIP_T1.webp"
   },
   "SWORDMANCER_HEAVY_ARMOR": {
     "id": "SWORDMANCER_HEAVY_ARMOR",
@@ -1807,7 +1864,8 @@
         "value": 20,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/SWORDMANCER_HEAVY_ARMOR.webp"
   },
   "SWORDMANCER_TAC_FISTS": {
     "id": "SWORDMANCER_TAC_FISTS",
@@ -1831,7 +1889,8 @@
         "value": 43.1,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/SWORDMANCER_TAC_FISTS.webp"
   },
   "SWORDMANCER_TAC_GAUNTLETS": {
     "id": "SWORDMANCER_TAC_GAUNTLETS",
@@ -1855,7 +1914,8 @@
         "value": 19.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/SWORDMANCER_TAC_GAUNTLETS.webp"
   },
   "SWORDMANCER_FLINT": {
     "id": "SWORDMANCER_FLINT",
@@ -1879,7 +1939,8 @@
         "value": 23,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/SWORDMANCER_FLINT.webp"
   },
   "LYNX_CONNECTOR": {
     "id": "LYNX_CONNECTOR",
@@ -1903,7 +1964,8 @@
         "value": 17.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_CONNECTOR.webp"
   },
   "LYNX_GAUNTLETS": {
     "id": "LYNX_GAUNTLETS",
@@ -1927,7 +1989,8 @@
         "value": 17.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_GAUNTLETS.webp"
   },
   "LYNX_SLAB": {
     "id": "LYNX_SLAB",
@@ -1951,7 +2014,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_SLAB.webp"
   },
   "LYNX_AEGIS_INJECTOR": {
     "id": "LYNX_AEGIS_INJECTOR",
@@ -1971,7 +2035,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_AEGIS_INJECTOR.webp"
   },
   "LYNX_CUIRASS": {
     "id": "LYNX_CUIRASS",
@@ -1995,7 +2060,8 @@
         "value": 10.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_CUIRASS.webp"
   },
   "LYNX_HEAVY_ARMOR": {
     "id": "LYNX_HEAVY_ARMOR",
@@ -2019,7 +2085,8 @@
         "value": 10.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_HEAVY_ARMOR.webp"
   },
   "LYNX_GLOVES": {
     "id": "LYNX_GLOVES",
@@ -2043,7 +2110,8 @@
         "value": 20.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_GLOVES.webp"
   },
   "MI_SECURITY_PUSH_KNIFE": {
     "id": "MI_SECURITY_PUSH_KNIFE",
@@ -2067,7 +2135,8 @@
         "value": 23,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_PUSH_KNIFE.webp"
   },
   "MI_SECURITY_PUSH_KNIFE_T1": {
     "id": "MI_SECURITY_PUSH_KNIFE_T1",
@@ -2091,7 +2160,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_PUSH_KNIFE_T1.webp"
   },
   "MI_SECURITY_TOOLKIT": {
     "id": "MI_SECURITY_TOOLKIT",
@@ -2115,7 +2185,8 @@
         "value": 10.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_TOOLKIT.webp"
   },
   "MI_SECURITY_SCOPE": {
     "id": "MI_SECURITY_SCOPE",
@@ -2139,7 +2210,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_SCOPE.webp"
   },
   "MI_SECURITY_ARMBAND": {
     "id": "MI_SECURITY_ARMBAND",
@@ -2163,7 +2235,8 @@
         "value": 23,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_ARMBAND.webp"
   },
   "MI_SECURITY_ARMOR": {
     "id": "MI_SECURITY_ARMOR",
@@ -2187,7 +2260,8 @@
         "value": 20,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_ARMOR.webp"
   },
   "MI_SECURITY_OVERALLS": {
     "id": "MI_SECURITY_OVERALLS",
@@ -2211,7 +2285,8 @@
         "value": 13.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_OVERALLS.webp"
   },
   "MI_SECURITY_GLOVES": {
     "id": "MI_SECURITY_GLOVES",
@@ -2235,7 +2310,8 @@
         "value": 34.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_GLOVES.webp"
   },
   "MI_SECURITY_HANDS_PPE": {
     "id": "MI_SECURITY_HANDS_PPE",
@@ -2259,7 +2335,8 @@
         "value": 23,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/MI_SECURITY_HANDS_PPE.webp"
   },
   "TYPE_50_YINGLUNG_RADAR": {
     "id": "TYPE_50_YINGLUNG_RADAR",
@@ -2283,7 +2360,8 @@
         "value": 23,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TYPE_50_YINGLUNG_RADAR.webp"
   },
   "TYPE_50_YINGLUNG_GLOVES": {
     "id": "TYPE_50_YINGLUNG_GLOVES",
@@ -2307,7 +2385,8 @@
         "value": 34.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TYPE_50_YINGLUNG_GLOVES.webp"
   },
   "TYPE_50_YINGLUNG_GLOVES_T1": {
     "id": "TYPE_50_YINGLUNG_GLOVES_T1",
@@ -2331,7 +2410,8 @@
         "value": 34.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TYPE_50_YINGLUNG_GLOVES_T1.webp"
   },
   "TYPE_50_YINGLUNG_LIGHT_ARMOR": {
     "id": "TYPE_50_YINGLUNG_LIGHT_ARMOR",
@@ -2355,7 +2435,8 @@
         "value": 13.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TYPE_50_YINGLUNG_LIGHT_ARMOR.webp"
   },
   "TYPE_50_YINGLUNG_HEAVY_ARMOR": {
     "id": "TYPE_50_YINGLUNG_HEAVY_ARMOR",
@@ -2379,7 +2460,8 @@
         "value": 11.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TYPE_50_YINGLUNG_HEAVY_ARMOR.webp"
   },
   "TYPE_50_YINGLUNG_KNIFE": {
     "id": "TYPE_50_YINGLUNG_KNIFE",
@@ -2403,7 +2485,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TYPE_50_YINGLUNG_KNIFE.webp"
   },
   "TYPE_50_YINGLUNG_KNIFE_T1": {
     "id": "TYPE_50_YINGLUNG_KNIFE_T1",
@@ -2427,7 +2510,8 @@
         "value": 27.6,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TYPE_50_YINGLUNG_KNIFE_T1.webp"
   },
   "TURBID_CUTTING_TORCH": {
     "id": "TURBID_CUTTING_TORCH",
@@ -2451,7 +2535,8 @@
         "value": 27.6,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TURBID_CUTTING_TORCH.webp"
   },
   "HANGING_RIVER_O2_TUBE": {
     "id": "HANGING_RIVER_O2_TUBE",
@@ -2475,7 +2560,8 @@
         "value": 23,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/HANGING_RIVER_O2_TUBE.webp"
   },
   "TIDE_SURGE_GAUNTLETS": {
     "id": "TIDE_SURGE_GAUNTLETS",
@@ -2499,7 +2585,8 @@
         "value": 19.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TIDE_SURGE_GAUNTLETS.webp"
   },
   "TIDE_FALL_LIGHT_ARMOR": {
     "id": "TIDE_FALL_LIGHT_ARMOR",
@@ -2523,7 +2610,8 @@
         "value": 12.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/TIDE_FALL_LIGHT_ARMOR.webp"
   },
   "ETERNAL_XIRANITE_POWER_CORE": {
     "id": "ETERNAL_XIRANITE_POWER_CORE",
@@ -2547,7 +2635,8 @@
         "value": 24.6,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ETERNAL_XIRANITE_POWER_CORE.webp"
   },
   "ETERNAL_XIRANITE_POWER_CORE_T1": {
     "id": "ETERNAL_XIRANITE_POWER_CORE_T1",
@@ -2571,7 +2660,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ETERNAL_XIRANITE_POWER_CORE_T1.webp"
   },
   "ETERNAL_XIRANITE_GLOVES": {
     "id": "ETERNAL_XIRANITE_GLOVES",
@@ -2595,7 +2685,8 @@
         "value": 20.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ETERNAL_XIRANITE_GLOVES.webp"
   },
   "ETERNAL_XIRANITE_GLOVES_T1": {
     "id": "ETERNAL_XIRANITE_GLOVES_T1",
@@ -2619,7 +2710,8 @@
         "value": 20.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ETERNAL_XIRANITE_GLOVES_T1.webp"
   },
   "ETERNAL_XIRANITE_ARMOR": {
     "id": "ETERNAL_XIRANITE_ARMOR",
@@ -2643,7 +2735,8 @@
         "value": 20,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/ETERNAL_XIRANITE_ARMOR.webp"
   },
   "HOT_WORK_EXOSKELETON": {
     "id": "HOT_WORK_EXOSKELETON",
@@ -2667,7 +2760,8 @@
         "value": 11.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/HOT_WORK_EXOSKELETON.webp"
   },
   "HOT_WORK_GAUNTLETS": {
     "id": "HOT_WORK_GAUNTLETS",
@@ -2691,7 +2785,8 @@
         "value": 19.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/HOT_WORK_GAUNTLETS.webp"
   },
   "HOT_WORK_GAUNTLETS_T1": {
     "id": "HOT_WORK_GAUNTLETS_T1",
@@ -2715,7 +2810,8 @@
         "value": 19.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/HOT_WORK_GAUNTLETS_T1.webp"
   },
   "HOT_WORK_POWER_BANK": {
     "id": "HOT_WORK_POWER_BANK",
@@ -2739,7 +2835,8 @@
         "value": 41,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/HOT_WORK_POWER_BANK.webp"
   },
   "HOT_WORK_PYROMETER": {
     "id": "HOT_WORK_PYROMETER",
@@ -2759,7 +2856,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/HOT_WORK_PYROMETER.webp"
   },
   "FRONTIERS_ARMOR": {
     "id": "FRONTIERS_ARMOR",
@@ -2783,7 +2881,8 @@
         "value": 25.9,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_ARMOR.webp"
   },
   "FRONTIERS_ARMOR_T1": {
     "id": "FRONTIERS_ARMOR_T1",
@@ -2807,7 +2906,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_ARMOR_T1.webp"
   },
   "FRONTIERS_ARMOR_T2": {
     "id": "FRONTIERS_ARMOR_T2",
@@ -2831,7 +2931,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_ARMOR_T2.webp"
   },
   "FRONTIERS_ARMOR_T3": {
     "id": "FRONTIERS_ARMOR_T3",
@@ -2855,7 +2956,8 @@
         "value": 10.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_ARMOR_T3.webp"
   },
   "FRONTIERS_BLIGHT_RES_GLOVES": {
     "id": "FRONTIERS_BLIGHT_RES_GLOVES",
@@ -2879,7 +2981,8 @@
         "value": 34.5,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_BLIGHT_RES_GLOVES.webp"
   },
   "FRONTIERS_COMM": {
     "id": "FRONTIERS_COMM",
@@ -2903,7 +3006,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_COMM.webp"
   },
   "FRONTIERS_COMM_T1": {
     "id": "FRONTIERS_COMM_T1",
@@ -2927,7 +3031,8 @@
         "value": 23,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_COMM_T1.webp"
   },
   "FRONTIERS_EXTRA_O2_TUBE": {
     "id": "FRONTIERS_EXTRA_O2_TUBE",
@@ -2951,7 +3056,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/FRONTIERS_EXTRA_O2_TUBE.webp"
   },
   "AETHERTECH_PLATING": {
     "id": "AETHERTECH_PLATING",
@@ -2975,7 +3081,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AETHERTECH_PLATING.webp"
   },
   "AETHERTECH_GLOVES": {
     "id": "AETHERTECH_GLOVES",
@@ -2999,31 +3106,8 @@
         "value": 34,
         "isPercentage": false
       }
-    ]
-  },
-  "AETHERTECH_ANALYSIS_BAND": {
-    "id": "AETHERTECH_ANALYSIS_BAND",
-    "tier": 5,
-    "level": 70,
-    "type": "KIT",
-    "set": "Aethertech",
-    "stats": [
-      {
-        "type": "STRENGTH",
-        "value": 32
-      },
-      {
-        "type": "WILL",
-        "value": 21
-      }
     ],
-    "effects": [
-      {
-        "type": "PHYSICAL_DMG_BONUS",
-        "value": 23,
-        "isPercentage": true
-      }
-    ]
+    "imgUrl": "assets/equipment/AETHERTECH_GLOVES.webp"
   },
   "AETHERTECH_STABILIZER": {
     "id": "AETHERTECH_STABILIZER",
@@ -3047,7 +3131,8 @@
         "value": 41,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/AETHERTECH_STABILIZER.webp"
   },
   "BONEKRUSHA_HEAVY_ARMOR": {
     "id": "BONEKRUSHA_HEAVY_ARMOR",
@@ -3071,7 +3156,8 @@
         "value": 12.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_HEAVY_ARMOR.webp"
   },
   "BONEKRUSHA_HEAVY_ARMOR_T1": {
     "id": "BONEKRUSHA_HEAVY_ARMOR_T1",
@@ -3095,7 +3181,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_HEAVY_ARMOR_T1.webp"
   },
   "BONEKRUSHA_PONCHO": {
     "id": "BONEKRUSHA_PONCHO",
@@ -3119,7 +3206,8 @@
         "value": 20.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_PONCHO.webp"
   },
   "BONEKRUSHA_PONCHO_T1": {
     "id": "BONEKRUSHA_PONCHO_T1",
@@ -3143,7 +3231,8 @@
         "value": 12.3,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_PONCHO_T1.webp"
   },
   "BONEKRUSHA_MASK": {
     "id": "BONEKRUSHA_MASK",
@@ -3167,7 +3256,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_MASK.webp"
   },
   "BONEKRUSHA_MASK_T1": {
     "id": "BONEKRUSHA_MASK_T1",
@@ -3191,7 +3281,8 @@
         "value": 10.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_MASK_T1.webp"
   },
   "BONEKRUSHA_FIGURINE": {
     "id": "BONEKRUSHA_FIGURINE",
@@ -3215,7 +3306,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_FIGURINE.webp"
   },
   "PULSER_LABS_DISRUPTOR_SUIT": {
     "id": "PULSER_LABS_DISRUPTOR_SUIT",
@@ -3239,7 +3331,8 @@
         "value": 20,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/PULSER_LABS_DISRUPTOR_SUIT.webp"
   },
   "PULSER_LABS_GLOVES": {
     "id": "PULSER_LABS_GLOVES",
@@ -3263,7 +3356,8 @@
         "value": 19.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/PULSER_LABS_GLOVES.webp"
   },
   "PULSER_LABS_CALIBRATOR": {
     "id": "PULSER_LABS_CALIBRATOR",
@@ -3281,7 +3375,8 @@
         "value": 41
       }
     ],
-    "effects": []
+    "effects": [],
+    "imgUrl": "assets/equipment/PULSER_LABS_CALIBRATOR.webp"
   },
   "BONEKRUSHA_FIGURINE_T1": {
     "id": "BONEKRUSHA_FIGURINE_T1",
@@ -3305,7 +3400,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/BONEKRUSHA_FIGURINE_T1.webp"
   },
   "HOT_WORK_POWER_CARTRIDGE": {
     "id": "HOT_WORK_POWER_CARTRIDGE",
@@ -3329,7 +3425,8 @@
         "value": 41,
         "isPercentage": false
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/HOT_WORK_POWER_CARTRIDGE.webp"
   },
   "LYNX_CONNECTOR_T1": {
     "id": "LYNX_CONNECTOR_T1",
@@ -3353,7 +3450,8 @@
         "value": 41.4,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/LYNX_CONNECTOR_T1.webp"
   },
   "REDEEMER_TAG": {
     "id": "REDEEMER_TAG",
@@ -3373,7 +3471,8 @@
         "value": 17.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/REDEEMER_TAG.webp"
   },
   "REDEEMER_TAG_T1": {
     "id": "REDEEMER_TAG_T1",
@@ -3393,7 +3492,8 @@
         "value": 43.2,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/REDEEMER_TAG_T1.webp"
   },
   "REDEEMER_SEAL": {
     "id": "REDEEMER_SEAL",
@@ -3413,7 +3513,8 @@
         "value": 25.7,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/REDEEMER_SEAL.webp"
   },
   "REDEEMER_SEAL_T1": {
     "id": "REDEEMER_SEAL_T1",
@@ -3433,6 +3534,7 @@
         "value": 10.8,
         "isPercentage": true
       }
-    ]
+    ],
+    "imgUrl": "assets/equipment/REDEEMER_SEAL_T1.webp"
   }
 }
