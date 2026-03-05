@@ -3,8 +3,8 @@ import { contextBridge, ipcRenderer } from "electron";
 import type { ChangelogItem } from "../shared/types";
 
 contextBridge.exposeInMainWorld("electronAPI", {
-  minimizeWindow: () => ipcRenderer.send("minimize-window"),
-  closeWindow: () => ipcRenderer.send("close-window"),
+  minimizeWindow: () => ipcRenderer.send("window-minimize"),
+  closeWindow: () => ipcRenderer.send("window-close"),
   getConfig: (key: string) => ipcRenderer.invoke("config:get", key),
   setConfig: (key: string, value: unknown) =>
     ipcRenderer.invoke("config:set", key, value),
